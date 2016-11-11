@@ -16,7 +16,12 @@ namespace biblioteka
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new FormSignIn());
         }
+    }
+
+    public static class DataContainer
+    {
+        public static Int32 ValueToShare;
     }
 }
