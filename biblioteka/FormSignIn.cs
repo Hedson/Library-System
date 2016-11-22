@@ -13,7 +13,7 @@ using System.Data.SqlClient;
 
 namespace biblioteka
 {
-    public partial class FormSignIn : Form
+    public partial class FormSignIn : FormPrimary
     {
         // Public static string to share this string to other forms.
         public static string AlreadyUserName;

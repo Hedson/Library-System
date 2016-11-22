@@ -10,12 +10,27 @@ using System.Windows.Forms;
 
 namespace biblioteka
 {
-    public partial class FormLogged : Form
+    public partial class FormLogged : FormPrimary
     {
         public FormLogged()
         {
             InitializeComponent();
             labelUser.Text = FormSignIn.AlreadyUserName;
+        }
+
+        private void bookBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.bookBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.database1DataSet);
+
+        }
+
+        private void FormLogged_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'database1DataSet.Book' table. You can move, or remove it, as needed.
+            this.bookTableAdapter.Fill(this.database1DataSet.Book);
+
         }
     }
 }

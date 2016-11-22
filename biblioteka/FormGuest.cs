@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace biblioteka
 {
-    public partial class FormGuest : Form
+    public partial class FormGuest : FormPrimary
     {
         public FormGuest()
         {

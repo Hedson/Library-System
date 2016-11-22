@@ -85,6 +85,12 @@
     <Compile Include="FormLogged.Designer.cs">
       <DependentUpon>FormLogged.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormPrimary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPrimary.Designer.cs">
+      <DependentUpon>FormPrimary.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormSignIn.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,6 +107,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormLogged.resx">
       <DependentUpon>FormLogged.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPrimary.resx">
+      <DependentUpon>FormPrimary.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormSignIn.resx">
       <DependentUpon>FormSignIn.cs</DependentUpon>
