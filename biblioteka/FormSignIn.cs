@@ -15,58 +15,71 @@ namespace biblioteka
 {
     public partial class FormSignIn : Form
     {
+        // Public static string to share this string to other forms.
+        public static string AlreadyUserName;
+
+
+        SqlConnection connection;
+        string connectionString;
         
-       // string cs;
 
         public FormSignIn()
         {
             InitializeComponent();
-           // cs = ConfigurationManager.ConnectionStrings["biblioteka.Properties.Settings.Database1ConnectionString"].ConnectionString;
+            connectionString = ConfigurationManager.ConnectionStrings["biblioteka.Properties.Settings.Database1ConnectionString"].ConnectionString;
         }
 
 
-        //string cs = @"Data Source=(LocalDB)\v11.0;AttachDbFilename=|DataDirectory|\Database1.mdf;Integrated Security=True;";
-    
+        private void PopulateUsers()
+        {
+            using (connection = new SqlConnection(connectionString))
+            using (SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM UserTable", connection))
+            {
+                //Da
+                DataTable loginTable = new DataTable();
+                adapter.Fill(loginTable);
+
+                listBox1.DisplayMember = "UserName";
+                listBox1.ValueMember = "id";
+                listBox1.DataSource = loginTable;
+            }
+        }
 
 
-        //btn_Submit Click event
+
+
+        //btn_Submit Click event - take user nad pass, connect to database and login
         private void btn_Submit_Click(object sender, EventArgs e)
         {
-            /*if (txt_UserName.Text == "" || txt_Password.Text == "")
+            string query = "SELECT * FROM UserTable where Username = @user and Password = @pass";
+            using (connection = new SqlConnection(connectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            using (SqlDataAdapter adapter = new SqlDataAdapter(command))
             {
-                MessageBox.Show("Please provide UserName and Password");
-                return;
-            }
-            try
-            {
-                //Create SqlConnection
-                SqlConnection con = new SqlConnection(cs);
-                SqlCommand cmd = new SqlCommand("Select * from tbl_Login where UserName=@username and Password=@password", con);
-                cmd.Parameters.AddWithValue("@username", txt_UserName.Text);
-                cmd.Parameters.AddWithValue("@password", txt_Password.Text);
-                con.Open();
-                SqlDataAdapter adapt = new SqlDataAdapter(cmd);
-                DataSet ds = new DataSet();
-                adapt.Fill(ds);
-                con.Close();
-                int count = ds.Tables[0].Rows.Count;
-                //If count is equal to 1, than show frmMain form
+                // get string from textBox1 and textBox2
+                command.Parameters.AddWithValue("@user", textBoxLogin.Text);
+                command.Parameters.AddWithValue("@pass", textBoxPassword.Text);
+
+                // create new DataTable instance
+                DataTable recipeTable = new DataTable();
+                adapter.Fill(recipeTable);
+
+                int count = recipeTable.Rows.Count;
                 if (count == 1)
                 {
+                    AlreadyUserName = textBoxLogin.Text;
+                    MessageBox.Show(AlreadyUserName);
                     MessageBox.Show("Login Successful!");
                     this.Hide();
-                    Form1 fm = new Form1();
-                    fm.Show();
+                    FormLogged bio = new FormLogged();
+                    bio.Show();
                 }
                 else
                 {
-                    MessageBox.Show("Login Failed!");
+                    MessageBox.Show("Login failed!");
                 }
+
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }*/
         }
 
         private void buttonAsGuest_Click(object sender, EventArgs e)
@@ -93,7 +106,7 @@ namespace biblioteka
         {
             // TODO: This line of code loads data into the 'database1DataSet.Book' table. You can move, or remove it, as needed.
             this.bookTableAdapter.Fill(this.database1DataSet.Book);
-
+            PopulateUsers();
         }
     }
 }
