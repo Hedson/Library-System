@@ -84,8 +84,8 @@ namespace biblioteka
 
         private void buttonAsGuest_Click(object sender, EventArgs e)
         {
-            FormGuest Guest = new FormGuest();
-            Guest.Show();
+            FormGuest guestWindow = new FormGuest();
+            guestWindow.Show();
             this.Hide();
         }
 
@@ -107,6 +107,13 @@ namespace biblioteka
             // TODO: This line of code loads data into the 'database1DataSet.Book' table. You can move, or remove it, as needed.
             this.bookTableAdapter.Fill(this.database1DataSet.Book);
             PopulateUsers();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Registration registrationWindow= new Registration();
+            registrationWindow.Show();
+            this.Hide();
         }
     }
 }

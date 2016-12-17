@@ -42,6 +42,8 @@
             this.bookTableAdapter = new biblioteka.Database1DataSetTableAdapters.BookTableAdapter();
             this.tableAdapterManager = new biblioteka.Database1DataSetTableAdapters.TableAdapterManager();
             this.listBox1 = new System.Windows.Forms.ListBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.database1DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -57,7 +59,7 @@
             // btn_Submit
             // 
             this.btn_Submit.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btn_Submit.Location = new System.Drawing.Point(389, 259);
+            this.btn_Submit.Location = new System.Drawing.Point(389, 256);
             this.btn_Submit.Name = "btn_Submit";
             this.btn_Submit.Size = new System.Drawing.Size(111, 34);
             this.btn_Submit.TabIndex = 2;
@@ -158,12 +160,36 @@
             this.listBox1.Size = new System.Drawing.Size(217, 173);
             this.listBox1.TabIndex = 11;
             // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.button1.Location = new System.Drawing.Point(648, 288);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(145, 44);
+            this.button1.TabIndex = 12;
+            this.button1.Text = "Registration";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label3.ForeColor = System.Drawing.SystemColors.Info;
+            this.label3.Location = new System.Drawing.Point(630, 256);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(187, 20);
+            this.label3.TabIndex = 13;
+            this.label3.Text = "Do not have an account?";
+            // 
             // FormSignIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
             this.ClientSize = new System.Drawing.Size(885, 564);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.buttonAsGuest);
             this.Controls.Add(this.label2);
@@ -185,6 +211,8 @@
             this.Controls.SetChildIndex(this.label2, 0);
             this.Controls.SetChildIndex(this.buttonAsGuest, 0);
             this.Controls.SetChildIndex(this.listBox1, 0);
+            this.Controls.SetChildIndex(this.button1, 0);
+            this.Controls.SetChildIndex(this.label3, 0);
             ((System.ComponentModel.ISupportInitialize)(this.database1DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -207,5 +235,7 @@
         private Database1DataSetTableAdapters.BookTableAdapter bookTableAdapter;
         private Database1DataSetTableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label3;
     }
 }
