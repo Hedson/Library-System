@@ -18,7 +18,6 @@ namespace biblioteka
         // Public static string to share this string to other forms.
         public static string AlreadyUserName;
 
-
         SqlConnection connection;
         string connectionString;
         
@@ -69,7 +68,7 @@ namespace biblioteka
                     MessageBox.Show(AlreadyUserName);
                     MessageBox.Show("Login Successful!");
                     this.Hide();
-                    FormLogged bio = new FormLogged();
+                    FormLoggedBooks bio = new FormLoggedBooks();
                     bio.Show();
                 }
                 else

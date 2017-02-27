@@ -51,7 +51,7 @@
             // textBoxLogin
             // 
             this.textBoxLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBoxLogin.Location = new System.Drawing.Point(315, 141);
+            this.textBoxLogin.Location = new System.Drawing.Point(371, 180);
             this.textBoxLogin.Name = "textBoxLogin";
             this.textBoxLogin.Size = new System.Drawing.Size(258, 31);
             this.textBoxLogin.TabIndex = 1;
@@ -59,7 +59,7 @@
             // btn_Submit
             // 
             this.btn_Submit.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btn_Submit.Location = new System.Drawing.Point(389, 256);
+            this.btn_Submit.Location = new System.Drawing.Point(445, 295);
             this.btn_Submit.Name = "btn_Submit";
             this.btn_Submit.Size = new System.Drawing.Size(111, 34);
             this.btn_Submit.TabIndex = 2;
@@ -70,7 +70,7 @@
             // textBoxPassword
             // 
             this.textBoxPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBoxPassword.Location = new System.Drawing.Point(315, 197);
+            this.textBoxPassword.Location = new System.Drawing.Point(371, 236);
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.Size = new System.Drawing.Size(258, 31);
             this.textBoxPassword.TabIndex = 3;
@@ -80,7 +80,7 @@
             this.txt_UserName.AutoSize = true;
             this.txt_UserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.txt_UserName.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.txt_UserName.Location = new System.Drawing.Point(238, 144);
+            this.txt_UserName.Location = new System.Drawing.Point(294, 183);
             this.txt_UserName.Name = "txt_UserName";
             this.txt_UserName.Size = new System.Drawing.Size(71, 25);
             this.txt_UserName.TabIndex = 4;
@@ -91,7 +91,7 @@
             this.labelPassword.AutoSize = true;
             this.labelPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.labelPassword.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.labelPassword.Location = new System.Drawing.Point(203, 203);
+            this.labelPassword.Location = new System.Drawing.Point(259, 242);
             this.labelPassword.Name = "labelPassword";
             this.labelPassword.Size = new System.Drawing.Size(112, 25);
             this.labelPassword.TabIndex = 5;
@@ -102,7 +102,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label1.Location = new System.Drawing.Point(88, 60);
+            this.label1.Location = new System.Drawing.Point(144, 99);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(694, 39);
             this.label1.TabIndex = 6;
@@ -113,7 +113,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label2.Location = new System.Drawing.Point(297, 347);
+            this.label2.Location = new System.Drawing.Point(353, 386);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(292, 33);
             this.label2.TabIndex = 7;
@@ -122,7 +122,7 @@
             // buttonAsGuest
             // 
             this.buttonAsGuest.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonAsGuest.Location = new System.Drawing.Point(389, 407);
+            this.buttonAsGuest.Location = new System.Drawing.Point(445, 446);
             this.buttonAsGuest.Name = "buttonAsGuest";
             this.buttonAsGuest.Size = new System.Drawing.Size(111, 34);
             this.buttonAsGuest.TabIndex = 8;
@@ -151,11 +151,12 @@
             this.tableAdapterManager.UpdateOrder = biblioteka.Database1DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.UserBooksTableAdapter = null;
             this.tableAdapterManager.UserTableAdapter = null;
+            this.tableAdapterManager.UserTableTableAdapter = null;
             // 
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(43, 268);
+            this.listBox1.Location = new System.Drawing.Point(99, 307);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(217, 173);
             this.listBox1.TabIndex = 11;
@@ -163,7 +164,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button1.Location = new System.Drawing.Point(648, 288);
+            this.button1.Location = new System.Drawing.Point(704, 327);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(145, 44);
             this.button1.TabIndex = 12;
@@ -176,7 +177,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label3.ForeColor = System.Drawing.SystemColors.Info;
-            this.label3.Location = new System.Drawing.Point(630, 256);
+            this.label3.Location = new System.Drawing.Point(686, 295);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(187, 20);
             this.label3.TabIndex = 13;
@@ -187,7 +188,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
-            this.ClientSize = new System.Drawing.Size(885, 564);
+            this.ClientSize = new System.Drawing.Size(984, 579);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.listBox1);

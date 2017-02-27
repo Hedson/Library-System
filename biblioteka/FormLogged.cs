@@ -32,5 +32,12 @@ namespace biblioteka
             this.bookTableAdapter.Fill(this.database1DataSet.Book);
 
         }
+
+        private void buttonGoToUserBooks_Click(object sender, EventArgs e)
+        {
+            FormLoggedBooks formLoggedBooks = new FormLoggedBooks();
+            formLoggedBooks.Show();
+            this.Hide();
+        }
     }
 }

@@ -85,6 +85,12 @@
     <Compile Include="FormLogged.Designer.cs">
       <DependentUpon>FormLogged.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormLoggedBooks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLoggedBooks.Designer.cs">
+      <DependentUpon>FormLoggedBooks.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormPrimary.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,6 +120,9 @@
     <EmbeddedResource Include="FormLogged.resx">
       <DependentUpon>FormLogged.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormLoggedBooks.resx">
+      <DependentUpon>FormLoggedBooks.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormPrimary.resx">
       <DependentUpon>FormPrimary.cs</DependentUpon>
     </EmbeddedResource>
@@ -133,6 +142,7 @@
       <DependentUpon>Registration.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
     <None Include="Database1DataSet.xsc">
       <DependentUpon>Database1DataSet.xsd</DependentUpon>
     </None>
