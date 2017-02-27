@@ -33,7 +33,7 @@ namespace biblioteka
 
         private void FormGuest_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'database1DataSet.Book' table. You can move, or remove it, as needed.
+            // TODO: This line of code loads data into the 'database1DataSet.Book' table. You can move, or remove it, as needed..
             this.bookTableAdapter.Fill(this.database1DataSet.Book);
 
         }
