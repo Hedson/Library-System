@@ -35,5 +35,12 @@ namespace biblioteka
             formSingIn.Show();
             this.Hide();
         }
+
+        protected void goToSignInForm()
+        {
+            FormSignIn formSingIn = new FormSignIn();
+            formSingIn.Show();
+            this.Hide();
+        }
     }
 }

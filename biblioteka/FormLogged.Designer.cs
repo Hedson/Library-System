@@ -164,6 +164,7 @@
             this.tableAdapterManager.UpdateOrder = biblioteka.Database1DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.UserBooksTableAdapter = null;
             this.tableAdapterManager.UserTableAdapter = null;
+            this.tableAdapterManager.UserTableTableAdapter = null;
             // 
             // bookBindingNavigator
             // 
@@ -192,7 +193,7 @@
             this.bookBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.bookBindingNavigator.Name = "bookBindingNavigator";
             this.bookBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.bookBindingNavigator.Size = new System.Drawing.Size(278, 25);
+            this.bookBindingNavigator.Size = new System.Drawing.Size(309, 25);
             this.bookBindingNavigator.TabIndex = 29;
             this.bookBindingNavigator.Text = "bindingNavigator1";
             // 
@@ -344,7 +345,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(908, 732);
+            this.ClientSize = new System.Drawing.Size(1039, 732);
             this.Controls.Add(this.bookDataGridView);
             this.Controls.Add(this.bookBindingNavigator);
             this.Controls.Add(this.label3);

@@ -19,15 +19,9 @@ namespace biblioteka
 
         private void buttonLogIn_Click(object sender, EventArgs e)
         {
-            FormSignIn signIn = new FormSignIn();
-            signIn.Show();
-            this.Hide();
+            this.goToSignInForm();
         }
 
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
 
         private void bookBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {

@@ -46,8 +46,6 @@ namespace biblioteka
         }
 
 
-
-
         //btn_Submit Click event - take user nad pass, connect to database and login
         private void btn_Submit_Click(object sender, EventArgs e)
         {
@@ -89,10 +87,6 @@ namespace biblioteka
             this.Hide();
         }
 
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
 
         private void bookBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
@@ -115,5 +109,6 @@ namespace biblioteka
             registrationWindow.Show();
             this.Hide();
         }
+
     }
 }

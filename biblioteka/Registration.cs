@@ -63,5 +63,10 @@ namespace biblioteka
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void buttonGoToMainPage_Click(object sender, EventArgs e)
+        {
+            this.goToSignInForm();
+        }
     }
 }

@@ -121,6 +121,7 @@
             this.buttonGoToMainPage.TabIndex = 6;
             this.buttonGoToMainPage.Text = "Main Page";
             this.buttonGoToMainPage.UseVisualStyleBackColor = true;
+            this.buttonGoToMainPage.Click += new System.EventHandler(this.buttonGoToMainPage_Click);
             // 
             // database1DataSet
             // 
