@@ -40,7 +40,7 @@ namespace biblioteka
             using (SqlCommand command = new SqlCommand(query, connection))
             using (SqlDataAdapter adapter = new SqlDataAdapter(command))
             {
-                command.Parameters.AddWithValue("@UserName", FormSignIn.AlreadyUserName);
+                command.Parameters.AddWithValue("@UserName", User.AlreadyUserName);
 
                 DataTable userTable = new DataTable();
                 adapter.Fill(userTable);

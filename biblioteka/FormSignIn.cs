@@ -48,35 +48,59 @@ namespace biblioteka
         //btn_Submit Click event - take user nad pass, connect to database and login
         private void btn_Submit_Click(object sender, EventArgs e)
         {
-            string query = "SELECT * FROM UserTable where Username = @user and Password = @pass";
-            using (connection = new SqlConnection(connectionString))
-            using (SqlCommand command = new SqlCommand(query, connection))
-            using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+            //string query = "SELECT * FROM UserTable where Username = @user and Password = @pass";
+            //using (connection = new SqlConnection(connectionString))
+            //using (SqlCommand command = new SqlCommand(query, connection))
+            //using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+            //{
+            //    // get string from textBox1 and textBox2
+            //    command.Parameters.AddWithValue("@user", textBoxLogin.Text);
+            //    command.Parameters.AddWithValue("@pass", textBoxPassword.Text);
+
+            //    // create new DataTable instance
+            //    DataTable recipeTable = new DataTable();
+            //    adapter.Fill(recipeTable);
+
+            //    int count = recipeTable.Rows.Count;
+            //    if (count == 1)
+            //    {
+            //        AlreadyUserName = textBoxLogin.Text;
+            //        MessageBox.Show(AlreadyUserName);
+            //        MessageBox.Show("Login Successful!");
+            //        this.Hide();
+            //        FormLoggedBooks bio = new FormLoggedBooks();
+            //        bio.Show();
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("Login failed!");
+            //    }
+
+            //}
+
+            login();
+
+        }
+        private void login()
+        {
+            string userName = textBoxLogin.Text;
+            string password = textBoxPassword.Text;
+
+            try
             {
-                // get string from textBox1 and textBox2
-                command.Parameters.AddWithValue("@user", textBoxLogin.Text);
-                command.Parameters.AddWithValue("@pass", textBoxPassword.Text);
-
-                // create new DataTable instance
-                DataTable recipeTable = new DataTable();
-                adapter.Fill(recipeTable);
-
-                int count = recipeTable.Rows.Count;
-                if (count == 1)
+                User user = new User(userName, password);
+                if (user.LoginUser())
                 {
-                    AlreadyUserName = textBoxLogin.Text;
-                    MessageBox.Show(AlreadyUserName);
-                    MessageBox.Show("Login Successful!");
                     this.Hide();
                     FormLoggedBooks bio = new FormLoggedBooks();
                     bio.Show();
                 }
-                else
-                {
-                    MessageBox.Show("Login failed!");
-                }
-
             }
+            catch(Exception exception)
+            {
+                MessageBox.Show($"An error: {exception}");
+            }
+
         }
 
         private void buttonAsGuest_Click(object sender, EventArgs e)
@@ -84,6 +108,9 @@ namespace biblioteka
             FormGuest guestWindow = new FormGuest();
             guestWindow.Show();
             this.Hide();
+
+
+
         }
 
 
