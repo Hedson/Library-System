@@ -43,7 +43,7 @@ namespace biblioteka
         {
             try
             {
-                string query = "INSERT INTO UserTable VALUES (@UserName, @Pass, @email)";
+                string query = "INSERT INTO UserTable VALUES (@UserName, @Pass, @FirstName, @SecondName, @City, @email, 0)";
 
                 using (connection = new SqlConnection(connectionString))
                 using (SqlCommand command = new SqlCommand(query, connection))
@@ -52,6 +52,9 @@ namespace biblioteka
 
                     command.Parameters.AddWithValue("@UserName", textBoxLogin.Text);
                     command.Parameters.AddWithValue("@Pass", textBoxPassword.Text);
+                    command.Parameters.AddWithValue("@FirstName", textBoxFirstName.Text);
+                    command.Parameters.AddWithValue("@SecondName", textBoxSecondName.Text);
+                    command.Parameters.AddWithValue("@City", textBoxCity.Text);
                     command.Parameters.AddWithValue("@email", textBoxEmail.Text);
 
                     command.ExecuteScalar();
