@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace biblioteka
 {
-    class User
+    class User : IDataBase
     {
         public static string AlreadyUserName;
 
@@ -20,6 +20,10 @@ namespace biblioteka
         public string LastName { get; private set; }
         public string City { get; private set; }
         public string Email { get; private set; }
+
+        public bool IsConnected { get; private set; }
+        public delegate void LoginUserBody();
+
 
         public User(string userName, string password)
         {
@@ -91,20 +95,22 @@ namespace biblioteka
         }
 
 
-        public bool LoginUser()
+        public void LoginUser()
         {
             SqlConnection connection;
             string connectionString;
             connectionString = ConfigurationManager.ConnectionStrings["biblioteka.Properties.Settings.Database1ConnectionString"].ConnectionString;
 
-            string query = "SELECT * FROM UserTable where Username = @user and Password = @pass";
+            //string query = "SELECT * FROM UserTable where Username = @user and Password = @pass";
+
+            string query = "SELECT * FROM UserTable where Username = '" + UserName + "'and Password ='" + Password + "'";
+
             using (connection = new SqlConnection(connectionString))
             using (SqlCommand command = new SqlCommand(query, connection))
             using (SqlDataAdapter adapter = new SqlDataAdapter(command))
             {
-                // get string from textBox1 and textBox2
-                command.Parameters.AddWithValue("@user", UserName);
-                command.Parameters.AddWithValue("@pass", Password);
+               // command.Parameters.AddWithValue("@user", UserName);
+               // command.Parameters.AddWithValue("@pass", Password);
 
                 // create new DataTable instance
                 DataTable recipeTable = new DataTable();
@@ -116,17 +122,23 @@ namespace biblioteka
                     AlreadyUserName = UserName;
                     MessageBox.Show(AlreadyUserName);
                     MessageBox.Show("Login Successful!");
-                    return true;
                 }
                 else
                 {
                     MessageBox.Show("Login failed! Invalid User Name or password.");
-                    return false;
                 }
 
             }
+
+
+
         }
 
+       
 
+        public void Connect(string query)
+        {
+            
+        }
     }  
 }

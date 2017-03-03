@@ -20,7 +20,7 @@ namespace biblioteka
 
         SqlConnection connection;
         string connectionString;
-        
+
 
         public FormSignIn()
         {
@@ -89,17 +89,19 @@ namespace biblioteka
             try
             {
                 User user = new User(userName, password);
-                if (user.LoginUser())
-                {
-                    this.Hide();
-                    FormLoggedBooks bio = new FormLoggedBooks();
-                    bio.Show();
-                }
+                user.LoginUser();
+
+                this.Hide();
+                FormLoggedBooks bio = new FormLoggedBooks();
+                bio.Show();
+
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
                 MessageBox.Show($"An error: {exception}");
             }
+
+
 
         }
 
@@ -132,7 +134,7 @@ namespace biblioteka
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Registration registrationWindow= new Registration();
+            Registration registrationWindow = new Registration();
             registrationWindow.Show();
             this.Hide();
         }
