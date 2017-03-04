@@ -39,7 +39,6 @@ namespace biblioteka
             SetLastName(lastName);
             SetCity(city);
             SetEmail(email);
-            Activate();
         }
 
 
@@ -71,22 +70,54 @@ namespace biblioteka
 
         private void SetFirstName(string firstName)
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrWhiteSpace(firstName))
+            {
+                throw new Exception("First name can not be empty.");
+            }
+            if (Password == firstName)
+            {
+                return;
+            }
+            FirstName = firstName;
         }
 
         private void SetLastName(string lastName)
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrWhiteSpace(lastName))
+            {
+                throw new Exception("Last name can not be empty.");
+            }
+            if (Password == lastName)
+            {
+                return;
+            }
+            LastName = lastName;
         }
 
         private void SetCity(string city)
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrWhiteSpace(city))
+            {
+                throw new Exception("City can not be empty.");
+            }
+            if (Password == city)
+            {
+                return;
+            }
+            City = city;
         }
 
         private void SetEmail(string email)
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrWhiteSpace(email))
+            {
+                throw new Exception("Email can not be empty.");
+            }
+            if (Password == email)
+            {
+                return;
+            }
+            Email = email;
         }
 
         private void Activate()
@@ -109,8 +140,8 @@ namespace biblioteka
             using (SqlCommand command = new SqlCommand(query, connection))
             using (SqlDataAdapter dataAdapter = new SqlDataAdapter(command))
             {
-               // command.Parameters.AddWithValue("@user", UserName);
-               // command.Parameters.AddWithValue("@pass", Password);
+                // command.Parameters.AddWithValue("@user", UserName);
+                // command.Parameters.AddWithValue("@pass", Password);
 
                 // create new DataTable instance
                 DataTable userTable = new DataTable();
@@ -131,14 +162,36 @@ namespace biblioteka
             }
 
 
-
         }
 
-       
-
-        public void Connect(string query)
+        // Method added new user to UserTable database table.
+        public void RegisterUser()
         {
-            
+            string query = "INSERT INTO UserTable VALUES ('" + UserName +"' ,'" + Password + "','" + FirstName + "','" + LastName + "','" + City + "','" + Email + "','"+0+"')";
+            DoQuery(query);
         }
-    }  
+
+        // Method used to Cennect to DB for functionalities like add, edit, delete elements from database.
+        public void DoQuery(string query)
+        {
+            SqlConnection connection;
+            string connectionString;
+            connectionString = ConfigurationManager.ConnectionStrings["biblioteka.Properties.Settings.Database1ConnectionString"].ConnectionString;
+
+            using (connection = new SqlConnection(connectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            using (SqlDataAdapter dataAdapter = new SqlDataAdapter(command))
+            {
+                SaveChanges(dataAdapter);
+            }
+        }
+
+        public void SaveChanges(SqlDataAdapter dataAdapter)
+        {
+            DataTable userTable = new DataTable();
+            dataAdapter.Fill(userTable);
+
+            dataAdapter.Update(userTable);        // update database.
+        }
+    }
 }

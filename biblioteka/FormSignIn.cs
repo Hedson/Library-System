@@ -78,10 +78,10 @@ namespace biblioteka
 
             //}
 
-            login();
+            Login();
 
         }
-        private void login()
+        private void Login()
         {
             string userName = textBoxLogin.Text;
             string password = textBoxPassword.Text;
@@ -98,11 +98,12 @@ namespace biblioteka
             }
             catch (Exception exception)
             {
-                MessageBox.Show($"An error: {exception}");
+                //Full exception information:
+                //MessageBox.Show($"An error: {exception}");  
+                
+                // Display only exception Message:  
+                MessageBox.Show(exception.Message);
             }
-
-
-
         }
 
 
@@ -111,9 +112,6 @@ namespace biblioteka
             FormGuest guestWindow = new FormGuest();
             guestWindow.Show();
             this.Hide();
-
-
-
         }
 
 
