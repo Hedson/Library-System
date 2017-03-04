@@ -39,5 +39,43 @@ namespace biblioteka
             formLoggedBooks.Show();
             this.Hide();
         }
+
+        private void searchButton_Click(object sender, EventArgs e)
+        {
+            string searchValue = searchTextBox.Text.ToUpper();
+
+            bookDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+            try
+            {
+                bool valueResult = false;
+                foreach (DataGridViewRow row in bookDataGridView.Rows)
+                {
+                    for (int i = 0; i < row.Cells.Count; i++)
+                    {
+                        if (row.Cells[i].Value.ToString().ToUpper() != null && row.Cells[i].Value.ToString().ToUpper().Equals(searchValue))
+                        {
+                            int rowIndex = row.Index;
+                            bookDataGridView.Rows[rowIndex].Selected = true;
+                            valueResult = true;
+
+                            // Move to selected DaraGridView row.
+                            bookDataGridView.CurrentCell = bookDataGridView.Rows[rowIndex].Cells[0];
+                            break;
+                        }
+                    }
+
+                }
+                if (!valueResult)
+                {
+                    MessageBox.Show("Unable to find " + searchTextBox.Text, "Not Found");
+                    return;
+                }
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
+        }
     }
 }

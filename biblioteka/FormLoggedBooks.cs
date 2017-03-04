@@ -27,6 +27,8 @@ namespace biblioteka
 
         private void FormLoggedBooks_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'database1DataSet.Book' table. You can move, or remove it, as needed.
+            this.bookTableAdapter.Fill(this.database1DataSet.Book);
             SetUserId();
             PopulateUserBooks();
         }
@@ -52,7 +54,12 @@ namespace biblioteka
         // Method that populate Books borrowed by user to list from database.
         private void PopulateUserBooks()
         {
-            string query = "SELECT a.title FROM Book a " +
+
+            listOfUserBooks.MultiColumn = true;
+
+            
+
+            string query = "SELECT * FROM Book a " +
                 "INNER JOIN UserBooks b ON a.Id = b.BookId " +
                 "WHERE b.UserId = @UserId";
             using (connection = new SqlConnection(connectionString))
@@ -67,6 +74,8 @@ namespace biblioteka
                 listOfUserBooks.DisplayMember = "title";
                 listOfUserBooks.ValueMember = "Id";
                 listOfUserBooks.DataSource = ingredientTable;
+
+                bookDataGridView.DataSource = ingredientTable;        
             }
         }
 
@@ -79,6 +88,12 @@ namespace biblioteka
             this.Hide();
         }
 
-        
+        private void bookBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.bookBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.database1DataSet);
+
+        }
     }
 }

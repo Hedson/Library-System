@@ -21,6 +21,7 @@ namespace biblioteka
         public string City { get; private set; }
         public string Email { get; private set; }
 
+
         public bool IsConnected { get; private set; }
         public delegate void LoginUserBody();
 
@@ -191,7 +192,8 @@ namespace biblioteka
             DataTable userTable = new DataTable();
             dataAdapter.Fill(userTable);
 
-            dataAdapter.Update(userTable);        // update database.
+            // Update database.
+            dataAdapter.Update(userTable);        
         }
     }
 }

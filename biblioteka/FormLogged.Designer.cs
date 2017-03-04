@@ -31,11 +31,9 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLogged));
             this.labelUser = new System.Windows.Forms.Label();
-            this.buttonSearch = new System.Windows.Forms.Button();
-            this.comboBoxSortBy = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.searchButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.TextBoxSearch = new System.Windows.Forms.TextBox();
+            this.searchTextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.database1DataSet = new biblioteka.Database1DataSet();
             this.bookBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -54,13 +52,15 @@
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.bookBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
+            this.buttonGoToUserBooks = new System.Windows.Forms.Button();
             this.bookDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.buttonGoToUserBooks = new System.Windows.Forms.Button();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.database1DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookBindingNavigator)).BeginInit();
@@ -77,63 +77,38 @@
             this.labelUser.TabIndex = 1;
             this.labelUser.Text = "labelUser";
             // 
-            // buttonSearch
+            // searchButton
             // 
-            this.buttonSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonSearch.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonSearch.Location = new System.Drawing.Point(505, 93);
-            this.buttonSearch.Name = "buttonSearch";
-            this.buttonSearch.Size = new System.Drawing.Size(93, 55);
-            this.buttonSearch.TabIndex = 26;
-            this.buttonSearch.Text = "Search";
-            this.buttonSearch.UseVisualStyleBackColor = true;
-            // 
-            // comboBoxSortBy
-            // 
-            this.comboBoxSortBy.BackColor = System.Drawing.Color.Gainsboro;
-            this.comboBoxSortBy.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.comboBoxSortBy.ForeColor = System.Drawing.Color.Black;
-            this.comboBoxSortBy.FormattingEnabled = true;
-            this.comboBoxSortBy.Items.AddRange(new object[] {
-            "title",
-            "author",
-            "data"});
-            this.comboBoxSortBy.Location = new System.Drawing.Point(302, 78);
-            this.comboBoxSortBy.Name = "comboBoxSortBy";
-            this.comboBoxSortBy.Size = new System.Drawing.Size(182, 32);
-            this.comboBoxSortBy.TabIndex = 25;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label2.Location = new System.Drawing.Point(226, 78);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 24);
-            this.label2.TabIndex = 24;
-            this.label2.Text = "sort by:";
+            this.searchButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.searchButton.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.searchButton.Location = new System.Drawing.Point(513, 81);
+            this.searchButton.Name = "searchButton";
+            this.searchButton.Size = new System.Drawing.Size(109, 67);
+            this.searchButton.TabIndex = 26;
+            this.searchButton.Text = "Search";
+            this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label1.Location = new System.Drawing.Point(50, 81);
+            this.label1.Location = new System.Drawing.Point(104, 81);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(155, 29);
             this.label1.TabIndex = 23;
             this.label1.Text = "Search book:";
             // 
-            // TextBoxSearch
+            // searchTextBox
             // 
-            this.TextBoxSearch.BackColor = System.Drawing.Color.Gainsboro;
-            this.TextBoxSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.TextBoxSearch.ForeColor = System.Drawing.Color.Black;
-            this.TextBoxSearch.Location = new System.Drawing.Point(55, 131);
-            this.TextBoxSearch.Name = "TextBoxSearch";
-            this.TextBoxSearch.Size = new System.Drawing.Size(429, 29);
-            this.TextBoxSearch.TabIndex = 22;
+            this.searchTextBox.BackColor = System.Drawing.Color.Gainsboro;
+            this.searchTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.searchTextBox.ForeColor = System.Drawing.Color.Black;
+            this.searchTextBox.Location = new System.Drawing.Point(55, 119);
+            this.searchTextBox.Name = "searchTextBox";
+            this.searchTextBox.Size = new System.Drawing.Size(429, 29);
+            this.searchTextBox.TabIndex = 22;
             // 
             // label3
             // 
@@ -295,21 +270,35 @@
             this.bookBindingNavigatorSaveItem.Text = "Save Data";
             this.bookBindingNavigatorSaveItem.Click += new System.EventHandler(this.bookBindingNavigatorSaveItem_Click);
             // 
+            // buttonGoToUserBooks
+            // 
+            this.buttonGoToUserBooks.Location = new System.Drawing.Point(654, 47);
+            this.buttonGoToUserBooks.Name = "buttonGoToUserBooks";
+            this.buttonGoToUserBooks.Size = new System.Drawing.Size(95, 36);
+            this.buttonGoToUserBooks.TabIndex = 30;
+            this.buttonGoToUserBooks.Text = "Go To List of user books";
+            this.buttonGoToUserBooks.UseVisualStyleBackColor = true;
+            this.buttonGoToUserBooks.Click += new System.EventHandler(this.buttonGoToUserBooks_Click);
+            // 
             // bookDataGridView
             // 
+            this.bookDataGridView.AllowUserToAddRows = false;
+            this.bookDataGridView.AllowUserToDeleteRows = false;
             this.bookDataGridView.AutoGenerateColumns = false;
             this.bookDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.bookDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5});
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewTextBoxColumn7,
+            this.dataGridViewTextBoxColumn8});
             this.bookDataGridView.DataSource = this.bookBindingSource;
-            this.bookDataGridView.Location = new System.Drawing.Point(55, 186);
+            this.bookDataGridView.Location = new System.Drawing.Point(55, 180);
             this.bookDataGridView.Name = "bookDataGridView";
-            this.bookDataGridView.Size = new System.Drawing.Size(543, 367);
-            this.bookDataGridView.TabIndex = 29;
+            this.bookDataGridView.Size = new System.Drawing.Size(743, 343);
+            this.bookDataGridView.TabIndex = 30;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -324,62 +313,60 @@
             this.dataGridViewTextBoxColumn2.HeaderText = "title";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "author";
-            this.dataGridViewTextBoxColumn3.HeaderText = "author";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            // 
             // dataGridViewTextBoxColumn4
             // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "year";
-            this.dataGridViewTextBoxColumn4.HeaderText = "year";
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "authorFirstName";
+            this.dataGridViewTextBoxColumn4.HeaderText = "authorFirstName";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             // 
             // dataGridViewTextBoxColumn5
             // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "category";
-            this.dataGridViewTextBoxColumn5.HeaderText = "category";
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "authorLastName";
+            this.dataGridViewTextBoxColumn5.HeaderText = "authorLastName";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             // 
-            // buttonGoToUserBooks
+            // dataGridViewTextBoxColumn6
             // 
-            this.buttonGoToUserBooks.Location = new System.Drawing.Point(647, 47);
-            this.buttonGoToUserBooks.Name = "buttonGoToUserBooks";
-            this.buttonGoToUserBooks.Size = new System.Drawing.Size(95, 36);
-            this.buttonGoToUserBooks.TabIndex = 30;
-            this.buttonGoToUserBooks.Text = "Go To List of user books";
-            this.buttonGoToUserBooks.UseVisualStyleBackColor = true;
-            this.buttonGoToUserBooks.Click += new System.EventHandler(this.buttonGoToUserBooks_Click);
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "year";
+            this.dataGridViewTextBoxColumn6.HeaderText = "year";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "quantity";
+            this.dataGridViewTextBoxColumn7.HeaderText = "quantity";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.DataPropertyName = "category";
+            this.dataGridViewTextBoxColumn8.HeaderText = "category";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
             // 
             // FormLogged
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 579);
-            this.Controls.Add(this.buttonGoToUserBooks);
             this.Controls.Add(this.bookDataGridView);
+            this.Controls.Add(this.buttonGoToUserBooks);
             this.Controls.Add(this.bookBindingNavigator);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.buttonSearch);
-            this.Controls.Add(this.comboBoxSortBy);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.searchButton);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.TextBoxSearch);
+            this.Controls.Add(this.searchTextBox);
             this.Controls.Add(this.labelUser);
             this.Name = "FormLogged";
             this.Text = "FormLogged";
             this.Load += new System.EventHandler(this.FormLogged_Load);
             this.Controls.SetChildIndex(this.labelUser, 0);
-            this.Controls.SetChildIndex(this.TextBoxSearch, 0);
+            this.Controls.SetChildIndex(this.searchTextBox, 0);
             this.Controls.SetChildIndex(this.label1, 0);
-            this.Controls.SetChildIndex(this.label2, 0);
-            this.Controls.SetChildIndex(this.comboBoxSortBy, 0);
-            this.Controls.SetChildIndex(this.buttonSearch, 0);
+            this.Controls.SetChildIndex(this.searchButton, 0);
             this.Controls.SetChildIndex(this.label3, 0);
             this.Controls.SetChildIndex(this.bookBindingNavigator, 0);
-            this.Controls.SetChildIndex(this.bookDataGridView, 0);
             this.Controls.SetChildIndex(this.buttonGoToUserBooks, 0);
+            this.Controls.SetChildIndex(this.bookDataGridView, 0);
             ((System.ComponentModel.ISupportInitialize)(this.database1DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookBindingNavigator)).EndInit();
@@ -394,11 +381,9 @@
         #endregion
 
         private System.Windows.Forms.Label labelUser;
-        private System.Windows.Forms.Button buttonSearch;
-        private System.Windows.Forms.ComboBox comboBoxSortBy;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox TextBoxSearch;
+        private System.Windows.Forms.TextBox searchTextBox;
         private System.Windows.Forms.Label label3;
         private Database1DataSet database1DataSet;
         private System.Windows.Forms.BindingSource bookBindingSource;
@@ -417,12 +402,15 @@
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
         private System.Windows.Forms.ToolStripButton bookBindingNavigatorSaveItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.Button buttonGoToUserBooks;
         private System.Windows.Forms.DataGridView bookDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.Button buttonGoToUserBooks;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
     }
 }
