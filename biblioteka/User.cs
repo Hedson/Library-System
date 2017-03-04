@@ -107,16 +107,16 @@ namespace biblioteka
 
             using (connection = new SqlConnection(connectionString))
             using (SqlCommand command = new SqlCommand(query, connection))
-            using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+            using (SqlDataAdapter dataAdapter = new SqlDataAdapter(command))
             {
                // command.Parameters.AddWithValue("@user", UserName);
                // command.Parameters.AddWithValue("@pass", Password);
 
                 // create new DataTable instance
-                DataTable recipeTable = new DataTable();
-                adapter.Fill(recipeTable);
+                DataTable userTable = new DataTable();
+                dataAdapter.Fill(userTable);
 
-                int count = recipeTable.Rows.Count;
+                int count = userTable.Rows.Count;
                 if (count == 1)
                 {
                     AlreadyUserName = UserName;

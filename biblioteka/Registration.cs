@@ -47,9 +47,8 @@ namespace biblioteka
 
                 using (connection = new SqlConnection(connectionString))
                 using (SqlCommand command = new SqlCommand(query, connection))
+                using (SqlDataAdapter dataAdapter = new SqlDataAdapter(command))
                 {
-                    connection.Open();
-
                     command.Parameters.AddWithValue("@UserName", textBoxLogin.Text);
                     command.Parameters.AddWithValue("@Pass", textBoxPassword.Text);
                     command.Parameters.AddWithValue("@FirstName", textBoxFirstName.Text);
@@ -57,8 +56,11 @@ namespace biblioteka
                     command.Parameters.AddWithValue("@City", textBoxCity.Text);
                     command.Parameters.AddWithValue("@email", textBoxEmail.Text);
 
-                    command.ExecuteScalar();
 
+                    DataTable userTable = new DataTable();
+                    dataAdapter.Fill(userTable);
+
+                    dataAdapter.Update(userTable);        // update database.
                 }
             }
             catch (Exception ex)
