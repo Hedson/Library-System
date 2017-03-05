@@ -140,7 +140,6 @@
             this.tableAdapterManager.BookTableAdapter = this.bookTableAdapter;
             this.tableAdapterManager.UpdateOrder = biblioteka.Database1DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.UserBooksTableAdapter = null;
-            //this.tableAdapterManager.UserTableAdapter = null;
             this.tableAdapterManager.UserTableTableAdapter = null;
             // 
             // bookBindingNavigator
@@ -352,6 +351,7 @@
             this.borrowABookButton.TabIndex = 31;
             this.borrowABookButton.Text = "Borrow selected book";
             this.borrowABookButton.UseVisualStyleBackColor = true;
+            this.borrowABookButton.Click += new System.EventHandler(this.borrowABookButton_Click);
             // 
             // FormLogged
             // 

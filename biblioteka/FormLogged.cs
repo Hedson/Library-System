@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,10 +14,14 @@ namespace biblioteka
 {
     public partial class FormLogged : FormPrimary
     {
+        SqlConnection connection;
+        string connectionString;
+
         public FormLogged()
         {
             InitializeComponent();
             labelUser.Text = FormSignIn.AlreadyUserName;
+            connectionString = ConfigurationManager.ConnectionStrings["biblioteka.Properties.Settings.Database1ConnectionString"].ConnectionString;
         }
 
         private void bookBindingNavigatorSaveItem_Click(object sender, EventArgs e)
@@ -75,6 +81,25 @@ namespace biblioteka
             catch (Exception exc)
             {
                 MessageBox.Show(exc.Message);
+            }
+        }
+
+        private void borrowABookButton_Click(object sender, EventArgs e)
+        {
+            
+
+            string query = "INSERT INTO UserBooks VALUES (@UserId,@BookId)";
+
+            using (connection = new SqlConnection(connectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                connection.Open();
+                command.Parameters.AddWithValue("@UserId", FormLoggedBooks.AlreadyUserId);
+                // Value at first column of selected DataGridvView row(Selected book Id).
+                command.Parameters.AddWithValue("@BookId", Convert.ToInt32(bookDataGridView.CurrentRow.Cells[0].Value));
+
+
+                command.ExecuteScalar();
             }
         }
     }
