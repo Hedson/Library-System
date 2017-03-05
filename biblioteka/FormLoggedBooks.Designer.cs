@@ -31,9 +31,9 @@
             this.components = new System.ComponentModel.Container();
             this.buttonGoToLibrary = new System.Windows.Forms.Button();
             this.listOfUserBooks = new System.Windows.Forms.ListBox();
-            this.buttonBookInformations = new System.Windows.Forms.Button();
-            this.buttonReturnABook = new System.Windows.Forms.Button();
-            this.buttonLogout = new System.Windows.Forms.Button();
+            this.selectedBookInformationButton = new System.Windows.Forms.Button();
+            this.returnABookButton = new System.Windows.Forms.Button();
+            this.logoutButton = new System.Windows.Forms.Button();
             this.database1DataSet = new biblioteka.Database1DataSet();
             this.bookBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bookTableAdapter = new biblioteka.Database1DataSetTableAdapters.BookTableAdapter();
@@ -72,35 +72,36 @@
             this.listOfUserBooks.Size = new System.Drawing.Size(175, 364);
             this.listOfUserBooks.TabIndex = 12;
             // 
-            // buttonBookInformations
+            // selectedBookInformationButton
             // 
-            this.buttonBookInformations.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.buttonBookInformations.Location = new System.Drawing.Point(284, 83);
-            this.buttonBookInformations.Name = "buttonBookInformations";
-            this.buttonBookInformations.Size = new System.Drawing.Size(174, 69);
-            this.buttonBookInformations.TabIndex = 13;
-            this.buttonBookInformations.Text = "Selected book informations\r\n";
-            this.buttonBookInformations.UseVisualStyleBackColor = true;
+            this.selectedBookInformationButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.selectedBookInformationButton.Location = new System.Drawing.Point(284, 83);
+            this.selectedBookInformationButton.Name = "selectedBookInformationButton";
+            this.selectedBookInformationButton.Size = new System.Drawing.Size(174, 69);
+            this.selectedBookInformationButton.TabIndex = 13;
+            this.selectedBookInformationButton.Text = "Selected book informations\r\n";
+            this.selectedBookInformationButton.UseVisualStyleBackColor = true;
             // 
-            // buttonReturnABook
+            // returnABookButton
             // 
-            this.buttonReturnABook.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.buttonReturnABook.Location = new System.Drawing.Point(43, 83);
-            this.buttonReturnABook.Name = "buttonReturnABook";
-            this.buttonReturnABook.Size = new System.Drawing.Size(174, 69);
-            this.buttonReturnABook.TabIndex = 14;
-            this.buttonReturnABook.Text = "Return a book";
-            this.buttonReturnABook.UseVisualStyleBackColor = true;
+            this.returnABookButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.returnABookButton.Location = new System.Drawing.Point(43, 83);
+            this.returnABookButton.Name = "returnABookButton";
+            this.returnABookButton.Size = new System.Drawing.Size(174, 69);
+            this.returnABookButton.TabIndex = 14;
+            this.returnABookButton.Text = "Return a book";
+            this.returnABookButton.UseVisualStyleBackColor = true;
             // 
-            // buttonLogout
+            // logoutButton
             // 
-            this.buttonLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.buttonLogout.Location = new System.Drawing.Point(818, 41);
-            this.buttonLogout.Name = "buttonLogout";
-            this.buttonLogout.Size = new System.Drawing.Size(133, 66);
-            this.buttonLogout.TabIndex = 15;
-            this.buttonLogout.Text = "Logout";
-            this.buttonLogout.UseVisualStyleBackColor = true;
+            this.logoutButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.logoutButton.Location = new System.Drawing.Point(818, 41);
+            this.logoutButton.Name = "logoutButton";
+            this.logoutButton.Size = new System.Drawing.Size(133, 66);
+            this.logoutButton.TabIndex = 15;
+            this.logoutButton.Text = "Logout";
+            this.logoutButton.UseVisualStyleBackColor = true;
+            this.logoutButton.Click += new System.EventHandler(this.logoutButton_Click);
             // 
             // database1DataSet
             // 
@@ -195,9 +196,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 579);
             this.Controls.Add(this.bookDataGridView);
-            this.Controls.Add(this.buttonLogout);
-            this.Controls.Add(this.buttonReturnABook);
-            this.Controls.Add(this.buttonBookInformations);
+            this.Controls.Add(this.logoutButton);
+            this.Controls.Add(this.returnABookButton);
+            this.Controls.Add(this.selectedBookInformationButton);
             this.Controls.Add(this.listOfUserBooks);
             this.Controls.Add(this.buttonGoToLibrary);
             this.Name = "FormLoggedBooks";
@@ -205,9 +206,9 @@
             this.Load += new System.EventHandler(this.FormLoggedBooks_Load);
             this.Controls.SetChildIndex(this.buttonGoToLibrary, 0);
             this.Controls.SetChildIndex(this.listOfUserBooks, 0);
-            this.Controls.SetChildIndex(this.buttonBookInformations, 0);
-            this.Controls.SetChildIndex(this.buttonReturnABook, 0);
-            this.Controls.SetChildIndex(this.buttonLogout, 0);
+            this.Controls.SetChildIndex(this.selectedBookInformationButton, 0);
+            this.Controls.SetChildIndex(this.returnABookButton, 0);
+            this.Controls.SetChildIndex(this.logoutButton, 0);
             this.Controls.SetChildIndex(this.bookDataGridView, 0);
             ((System.ComponentModel.ISupportInitialize)(this.database1DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookBindingSource)).EndInit();
@@ -221,9 +222,9 @@
 
         private System.Windows.Forms.Button buttonGoToLibrary;
         private System.Windows.Forms.ListBox listOfUserBooks;
-        private System.Windows.Forms.Button buttonBookInformations;
-        private System.Windows.Forms.Button buttonReturnABook;
-        private System.Windows.Forms.Button buttonLogout;
+        private System.Windows.Forms.Button selectedBookInformationButton;
+        private System.Windows.Forms.Button returnABookButton;
+        private System.Windows.Forms.Button logoutButton;
         private Database1DataSet database1DataSet;
         private System.Windows.Forms.BindingSource bookBindingSource;
         private Database1DataSetTableAdapters.BookTableAdapter bookTableAdapter;

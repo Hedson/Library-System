@@ -14,10 +14,11 @@ namespace biblioteka
 {
     public partial class FormLoggedBooks : FormPrimary
     {
+        public static int AlreadyUserId;
+
         SqlConnection connection;
         string connectionString;
 
-        public static int AlreadyUserId;
 
         public FormLoggedBooks()
         {
@@ -94,6 +95,11 @@ namespace biblioteka
             this.bookBindingSource.EndEdit();
             this.tableAdapterManager.UpdateAll(this.database1DataSet);
 
+        }
+
+        private void logoutButton_Click(object sender, EventArgs e)
+        {
+            this.goToSignInForm();
         }
     }
 }

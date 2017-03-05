@@ -111,7 +111,7 @@ namespace biblioteka
         {
             FormGuest guestWindow = new FormGuest();
             guestWindow.Show();
-            this.Hide();
+            this.Hide(); 
         }
 
 
