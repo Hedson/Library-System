@@ -85,9 +85,7 @@ namespace biblioteka
         }
 
         private void borrowABookButton_Click(object sender, EventArgs e)
-        {
-            
-
+        {           
             string query = "INSERT INTO UserBooks VALUES (@UserId,@BookId)";
 
             using (connection = new SqlConnection(connectionString))
@@ -101,6 +99,37 @@ namespace biblioteka
 
                 command.ExecuteScalar();
             }
+
+
+            // Second query to decrease quantity value by 1.
+            query = "UPDATE Book SET quantity = quantity - 1 where Id = @BookId";
+
+            using (connection = new SqlConnection(connectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                connection.Open();
+                command.Parameters.AddWithValue("@BookId", Convert.ToInt32(bookDataGridView.CurrentRow.Cells[0].Value));
+
+
+                command.ExecuteScalar();
+            }
+
+            PopulateBooks();
+        }
+
+        private void PopulateBooks()
+        {
+            string query = "SELECT * FROM Book";
+            using (connection = new SqlConnection(connectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+            {
+                DataTable bookTable = new DataTable();
+                adapter.Fill(bookTable);
+
+                bookDataGridView.DataSource = bookTable;
+            }
+
         }
     }
 }

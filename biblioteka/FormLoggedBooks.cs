@@ -69,15 +69,12 @@ namespace biblioteka
             {
                 command.Parameters.AddWithValue("@UserId", FormLoggedBooks.AlreadyUserId);
 
-                DataTable ingredientTable = new DataTable();
-                adapter.Fill(ingredientTable);
+                DataTable bookTable = new DataTable();
+                adapter.Fill(bookTable);
 
-                listOfUserBooks.DisplayMember = "title";
-                listOfUserBooks.ValueMember = "Id";
-                listOfUserBooks.DataSource = ingredientTable;
-
-                bookDataGridView.DataSource = ingredientTable;        
+                bookDataGridView.DataSource = bookTable;        
             }
+
         }
 
 
@@ -101,5 +98,43 @@ namespace biblioteka
         {
             this.goToSignInForm();
         }
+
+
+        private void returnABookButton_Click(object sender, EventArgs e)
+        {
+
+            string query = "DELETE TOP (1) FROM UserBooks WHERE UserId=@UserId AND BookId=@BookId";
+
+            using (connection = new SqlConnection(connectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                connection.Open();
+                command.Parameters.AddWithValue("@UserId", FormLoggedBooks.AlreadyUserId);
+                // Value at first column of selected DataGridvView row(Selected book Id).
+                command.Parameters.AddWithValue("@BookId", Convert.ToInt32(bookDataGridView.CurrentRow.Cells[0].Value));
+
+
+                command.ExecuteScalar();
+            }
+
+
+            // Second query to decrease quantity value by 1.
+            query = "UPDATE Book SET quantity = quantity + 1 where Id = @BookId";
+
+            using (connection = new SqlConnection(connectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                connection.Open();
+                command.Parameters.AddWithValue("@BookId", Convert.ToInt32(bookDataGridView.CurrentRow.Cells[0].Value));
+
+
+                command.ExecuteScalar();
+            }
+
+            PopulateUserBooks();
+            new Book().PopulateUserBooks();
+        }
+
+       
     }
 }

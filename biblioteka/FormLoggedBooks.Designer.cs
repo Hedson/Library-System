@@ -91,6 +91,7 @@
             this.returnABookButton.TabIndex = 14;
             this.returnABookButton.Text = "Return a book";
             this.returnABookButton.UseVisualStyleBackColor = true;
+            this.returnABookButton.Click += new System.EventHandler(this.returnABookButton_Click);
             // 
             // logoutButton
             // 
@@ -123,7 +124,6 @@
             this.tableAdapterManager.BookTableAdapter = this.bookTableAdapter;
             this.tableAdapterManager.UpdateOrder = biblioteka.Database1DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.UserBooksTableAdapter = null;
-           // this.tableAdapterManager.UserTableAdapter = null;
             this.tableAdapterManager.UserTableTableAdapter = null;
             // 
             // bookDataGridView
