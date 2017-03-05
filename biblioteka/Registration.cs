@@ -15,7 +15,7 @@ namespace biblioteka
 {
     public partial class Registration : FormPrimary
     {
-        SqlConnection connection;
+       // SqlConnection connection;
         string connectionString;
 
         public Registration()

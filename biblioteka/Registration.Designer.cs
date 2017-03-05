@@ -38,7 +38,7 @@
             this.buttonGoToMainPage = new System.Windows.Forms.Button();
             this.database1DataSet = new biblioteka.Database1DataSet();
             this.userBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.userTableAdapter = new biblioteka.Database1DataSetTableAdapters.UserTableAdapter();
+            //this.userTableAdapter = new biblioteka.Database1DataSetTableAdapters.UserTableAdapter();
             this.tableAdapterManager = new biblioteka.Database1DataSetTableAdapters.TableAdapterManager();
             this.userTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.userTableTableAdapter = new biblioteka.Database1DataSetTableAdapters.UserTableTableAdapter();
@@ -141,7 +141,7 @@
             // 
             // userTableAdapter
             // 
-            this.userTableAdapter.ClearBeforeFill = true;
+           // this.userTableAdapter.ClearBeforeFill = true;
             // 
             // tableAdapterManager
             // 
@@ -149,7 +149,7 @@
             this.tableAdapterManager.BookTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = biblioteka.Database1DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.UserBooksTableAdapter = null;
-            this.tableAdapterManager.UserTableAdapter = this.userTableAdapter;
+            //this.tableAdapterManager.UserTableAdapter = this.userTableAdapter;
             this.tableAdapterManager.UserTableTableAdapter = null;
             // 
             // userTableBindingSource
@@ -314,7 +314,7 @@
             this.Controls.SetChildIndex(this.textBoxCity, 0);
             this.Controls.SetChildIndex(this.label5, 0);
             ((System.ComponentModel.ISupportInitialize)(this.database1DataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).EndInit();
+
             ((System.ComponentModel.ISupportInitialize)(this.userTableBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.userTableDataGridView)).EndInit();
             this.ResumeLayout(false);
@@ -333,7 +333,7 @@
         private System.Windows.Forms.Button buttonGoToMainPage;
         private Database1DataSet database1DataSet;
         private System.Windows.Forms.BindingSource userBindingSource;
-        private Database1DataSetTableAdapters.UserTableAdapter userTableAdapter;
+        //private Database1DataSetTableAdapters.UserTableAdapter userTableAdapter;
         private Database1DataSetTableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.BindingSource userTableBindingSource;
         private Database1DataSetTableAdapters.UserTableTableAdapter userTableTableAdapter;

@@ -123,7 +123,7 @@
             this.tableAdapterManager.BookTableAdapter = this.bookTableAdapter;
             this.tableAdapterManager.UpdateOrder = biblioteka.Database1DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.UserBooksTableAdapter = null;
-            this.tableAdapterManager.UserTableAdapter = null;
+           // this.tableAdapterManager.UserTableAdapter = null;
             this.tableAdapterManager.UserTableTableAdapter = null;
             // 
             // bookDataGridView

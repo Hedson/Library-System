@@ -61,6 +61,7 @@
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.borrowABookButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.database1DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookBindingNavigator)).BeginInit();
@@ -139,7 +140,7 @@
             this.tableAdapterManager.BookTableAdapter = this.bookTableAdapter;
             this.tableAdapterManager.UpdateOrder = biblioteka.Database1DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.UserBooksTableAdapter = null;
-            this.tableAdapterManager.UserTableAdapter = null;
+            //this.tableAdapterManager.UserTableAdapter = null;
             this.tableAdapterManager.UserTableTableAdapter = null;
             // 
             // bookBindingNavigator
@@ -343,11 +344,21 @@
             this.dataGridViewTextBoxColumn8.HeaderText = "category";
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
             // 
+            // borrowABookButton
+            // 
+            this.borrowABookButton.Location = new System.Drawing.Point(829, 180);
+            this.borrowABookButton.Name = "borrowABookButton";
+            this.borrowABookButton.Size = new System.Drawing.Size(93, 65);
+            this.borrowABookButton.TabIndex = 31;
+            this.borrowABookButton.Text = "Borrow selected book";
+            this.borrowABookButton.UseVisualStyleBackColor = true;
+            // 
             // FormLogged
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 579);
+            this.Controls.Add(this.borrowABookButton);
             this.Controls.Add(this.bookDataGridView);
             this.Controls.Add(this.buttonGoToUserBooks);
             this.Controls.Add(this.bookBindingNavigator);
@@ -367,6 +378,7 @@
             this.Controls.SetChildIndex(this.bookBindingNavigator, 0);
             this.Controls.SetChildIndex(this.buttonGoToUserBooks, 0);
             this.Controls.SetChildIndex(this.bookDataGridView, 0);
+            this.Controls.SetChildIndex(this.borrowABookButton, 0);
             ((System.ComponentModel.ISupportInitialize)(this.database1DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookBindingNavigator)).EndInit();
@@ -412,5 +424,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.Button borrowABookButton;
     }
 }
