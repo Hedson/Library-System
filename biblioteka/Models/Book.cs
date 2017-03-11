@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace biblioteka
 {
+    // This model will be used to validate Add, delete and update book methods for admin.
     class Book : IDataBase
     {
         public string Title { get; private set; }

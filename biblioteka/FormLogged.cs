@@ -100,21 +100,10 @@ namespace biblioteka
                 command.ExecuteScalar();
             }
 
-
-            // Second query to decrease quantity value by 1.
-            query = "UPDATE Book SET quantity = quantity - 1 where Id = @BookId";
-
-            using (connection = new SqlConnection(connectionString))
-            using (SqlCommand command = new SqlCommand(query, connection))
-            {
-                connection.Open();
-                command.Parameters.AddWithValue("@BookId", Convert.ToInt32(bookDataGridView.CurrentRow.Cells[0].Value));
-
-
-                command.ExecuteScalar();
-            }
-
-            PopulateBooks();
+            // Decrease qunatity value by 1.
+            DecreaseQuantityValue(); 
+            // Update DataGridView.
+            PopulateBooks();  
         }
 
         private void PopulateBooks()
@@ -130,6 +119,23 @@ namespace biblioteka
                 bookDataGridView.DataSource = bookTable;
             }
 
+        }
+
+        // Method used to decrease quantity value in table Book by 1.
+        private void DecreaseQuantityValue()
+        {
+            // Set query, that is used to decrease quantity value by 1.
+            string query = "UPDATE Book SET quantity = quantity - 1 where Id = @BookId";
+
+            using (connection = new SqlConnection(connectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                connection.Open();
+                command.Parameters.AddWithValue("@BookId", Convert.ToInt32(bookDataGridView.CurrentRow.Cells[0].Value));
+
+
+                command.ExecuteScalar();
+            }
         }
     }
 }
