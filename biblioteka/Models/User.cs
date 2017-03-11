@@ -25,7 +25,10 @@ namespace biblioteka
         public bool IsConnected { get; private set; }
         public delegate void LoginUserBody();
 
-
+        public User(string userName)
+        {
+            SetUserName(userName);
+        }
         public User(string userName, string password)
         {
             SetUserName(userName);
@@ -172,6 +175,40 @@ namespace biblioteka
             DoQuery(query);
         }
 
+
+        // Method check if user is admin (Do edycji -- nie powtarzać kodu niepotrzebnie)
+        public bool IsAdmin(int alreadyUserId)
+        {
+            SqlConnection connection;
+            string connectionString;
+            connectionString = ConfigurationManager.ConnectionStrings["biblioteka.Properties.Settings.Database1ConnectionString"].ConnectionString;
+
+            string query = "SELECT IsAdmin From UserTable where Username = '" + UserName + "'and Id ='" + alreadyUserId + "'";
+            using (connection = new SqlConnection(connectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            using (SqlDataAdapter dataAdapter = new SqlDataAdapter(command))
+            {
+                // create new DataTable instance
+                DataTable userTable = new DataTable();
+                dataAdapter.Fill(userTable);
+
+                bool field = userTable.Rows[0].Field<bool>(0);
+
+                if (field == true)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+
+            }
+        }
+
+
+
+
         // Method used to Cennect to DB for functionalities like add, edit, delete elements from database.
         public void DoQuery(string query)
         {
@@ -195,5 +232,7 @@ namespace biblioteka
             // Update database.
             dataAdapter.Update(userTable);        
         }
+
+        
     }
 }

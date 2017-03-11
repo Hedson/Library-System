@@ -67,6 +67,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Database1DataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="FormAdminEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAdminEditor.Designer.cs">
+      <DependentUpon>FormAdminEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Book.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -116,6 +122,9 @@
     <Compile Include="Models\User.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAdminEditor.resx">
+      <DependentUpon>FormAdminEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormGuest.resx">
       <DependentUpon>FormGuest.cs</DependentUpon>

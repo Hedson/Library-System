@@ -19,6 +19,7 @@ namespace biblioteka
         SqlConnection connection;
         string connectionString;
 
+        User userLogged = new User(User.AlreadyUserName);
 
         public FormLoggedBooks()
         {
@@ -32,6 +33,7 @@ namespace biblioteka
             this.bookTableAdapter.Fill(this.database1DataSet.Book);
             SetUserId();
             PopulateUserBooks();
+            CheckAdmin();
         }
 
         // Method that set global static variable AlreadyUserId from database based on AlreadyUserName that was setted before.
@@ -135,6 +137,24 @@ namespace biblioteka
             new Book().PopulateUserBooks();
         }
 
-       
+        private void buttonAdminPanel_Click(object sender, EventArgs e)
+        {
+
+            if (userLogged.IsAdmin(AlreadyUserId))
+            {
+                FormAdminEditor formAdminEditor = new FormAdminEditor();
+                formAdminEditor.Show();
+                this.Hide();
+            }
+        }
+
+        private void CheckAdmin()
+        {
+            if(userLogged.IsAdmin(AlreadyUserId))
+            {
+               adminPanelButton.Enabled = true;
+               adminPanelButton.Visible = true;
+            }
+        }
     }
 }

@@ -46,6 +46,7 @@
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.adminPanelButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.database1DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookDataGridView)).BeginInit();
@@ -67,9 +68,9 @@
             this.listOfUserBooks.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.listOfUserBooks.FormattingEnabled = true;
             this.listOfUserBooks.ItemHeight = 20;
-            this.listOfUserBooks.Location = new System.Drawing.Point(809, 187);
+            this.listOfUserBooks.Location = new System.Drawing.Point(797, 167);
             this.listOfUserBooks.Name = "listOfUserBooks";
-            this.listOfUserBooks.Size = new System.Drawing.Size(175, 364);
+            this.listOfUserBooks.Size = new System.Drawing.Size(175, 124);
             this.listOfUserBooks.TabIndex = 12;
             // 
             // selectedBookInformationButton
@@ -190,11 +191,25 @@
             this.dataGridViewTextBoxColumn7.HeaderText = "category";
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             // 
+            // adminPanelButton
+            // 
+            this.adminPanelButton.Enabled = false;
+            this.adminPanelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.adminPanelButton.Location = new System.Drawing.Point(818, 412);
+            this.adminPanelButton.Name = "adminPanelButton";
+            this.adminPanelButton.Size = new System.Drawing.Size(143, 139);
+            this.adminPanelButton.TabIndex = 17;
+            this.adminPanelButton.Text = "Admin Panel";
+            this.adminPanelButton.UseVisualStyleBackColor = true;
+            this.adminPanelButton.Visible = false;
+            this.adminPanelButton.Click += new System.EventHandler(this.buttonAdminPanel_Click);
+            // 
             // FormLoggedBooks
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 579);
+            this.Controls.Add(this.adminPanelButton);
             this.Controls.Add(this.bookDataGridView);
             this.Controls.Add(this.logoutButton);
             this.Controls.Add(this.returnABookButton);
@@ -210,6 +225,7 @@
             this.Controls.SetChildIndex(this.returnABookButton, 0);
             this.Controls.SetChildIndex(this.logoutButton, 0);
             this.Controls.SetChildIndex(this.bookDataGridView, 0);
+            this.Controls.SetChildIndex(this.adminPanelButton, 0);
             ((System.ComponentModel.ISupportInitialize)(this.database1DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookDataGridView)).EndInit();
@@ -237,5 +253,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.Button adminPanelButton;
     }
 }
