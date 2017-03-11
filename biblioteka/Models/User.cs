@@ -132,37 +132,49 @@ namespace biblioteka
 
         public void LoginUser()
         {
-            SqlConnection connection;
-            string connectionString;
-            connectionString = ConfigurationManager.ConnectionStrings["biblioteka.Properties.Settings.Database1ConnectionString"].ConnectionString;
+            //SqlConnection connection;
+            //string connectionString;
+            //connectionString = ConfigurationManager.ConnectionStrings["biblioteka.Properties.Settings.Database1ConnectionString"].ConnectionString;
 
-            //string query = "SELECT * FROM UserTable where Username = @user and Password = @pass";
+            //string query = "SELECT * FROM UserTable where Username = '" + UserName + "'and Password ='" + Password + "'";
+
+            //using (connection = new SqlConnection(connectionString))
+            //using (SqlCommand command = new SqlCommand(query, connection))
+            //using (SqlDataAdapter dataAdapter = new SqlDataAdapter(command))
+            //{
+            //    // command.Parameters.AddWithValue("@user", UserName);
+            //    // command.Parameters.AddWithValue("@pass", Password);
+
+            //    // create new DataTable instance
+            //    DataTable userTable = new DataTable();
+            //    dataAdapter.Fill(userTable);
+
+            //    int count = userTable.Rows.Count;
+            //    if (count == 1)
+            //    {
+            //        AlreadyUserName = UserName;
+            //        MessageBox.Show(AlreadyUserName);
+            //        MessageBox.Show("Login Successful!");
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("Login failed! Invalid User Name or password.");
+            //    }
+
+            //}
 
             string query = "SELECT * FROM UserTable where Username = '" + UserName + "'and Password ='" + Password + "'";
-
-            using (connection = new SqlConnection(connectionString))
-            using (SqlCommand command = new SqlCommand(query, connection))
-            using (SqlDataAdapter dataAdapter = new SqlDataAdapter(command))
+            DataTable userTable = DoQueryReturnTable(query);
+            int count = userTable.Rows.Count;
+            if (count == 1)
             {
-                // command.Parameters.AddWithValue("@user", UserName);
-                // command.Parameters.AddWithValue("@pass", Password);
-
-                // create new DataTable instance
-                DataTable userTable = new DataTable();
-                dataAdapter.Fill(userTable);
-
-                int count = userTable.Rows.Count;
-                if (count == 1)
-                {
-                    AlreadyUserName = UserName;
-                    MessageBox.Show(AlreadyUserName);
-                    MessageBox.Show("Login Successful!");
-                }
-                else
-                {
-                    MessageBox.Show("Login failed! Invalid User Name or password.");
-                }
-
+                AlreadyUserName = UserName;
+                MessageBox.Show(AlreadyUserName);
+                MessageBox.Show("Login Successful!");
+            }
+            else
+            {
+                MessageBox.Show("Login failed! Invalid User Name or password.");
             }
 
 
@@ -179,30 +191,19 @@ namespace biblioteka
         // Method check if user is admin (Do edycji -- nie powtarzać kodu niepotrzebnie)
         public bool IsAdmin(int alreadyUserId)
         {
-            SqlConnection connection;
-            string connectionString;
-            connectionString = ConfigurationManager.ConnectionStrings["biblioteka.Properties.Settings.Database1ConnectionString"].ConnectionString;
-
             string query = "SELECT IsAdmin From UserTable where Username = '" + UserName + "'and Id ='" + alreadyUserId + "'";
-            using (connection = new SqlConnection(connectionString))
-            using (SqlCommand command = new SqlCommand(query, connection))
-            using (SqlDataAdapter dataAdapter = new SqlDataAdapter(command))
+
+            DataTable userTable = DoQueryReturnTable(query);
+
+            bool field = userTable.Rows[0].Field<bool>(0);
+
+            if (field)
             {
-                // create new DataTable instance
-                DataTable userTable = new DataTable();
-                dataAdapter.Fill(userTable);
-
-                bool field = userTable.Rows[0].Field<bool>(0);
-
-                if (field == true)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
 
@@ -231,6 +232,25 @@ namespace biblioteka
 
             // Update database.
             dataAdapter.Update(userTable);        
+        }
+
+
+        public DataTable DoQueryReturnTable(string query)
+        {
+            SqlConnection connection;
+            string connectionString;
+            connectionString = ConfigurationManager.ConnectionStrings["biblioteka.Properties.Settings.Database1ConnectionString"].ConnectionString;
+
+            using (connection = new SqlConnection(connectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            using (SqlDataAdapter dataAdapter = new SqlDataAdapter(command))
+            {
+                // create new DataTable instance
+                DataTable userTable = new DataTable();
+                dataAdapter.Fill(userTable);
+
+                return userTable;
+            }
         }
 
         
