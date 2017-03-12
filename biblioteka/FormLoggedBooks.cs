@@ -34,6 +34,7 @@ namespace biblioteka
             SetUserId();
             PopulateUserBooks();
             CheckAdmin();
+            labelUser.Text = User.AlreadyUserName;
         }
 
         // Method that set global static variable AlreadyUserId from database based on AlreadyUserName that was setted before.
@@ -58,7 +59,7 @@ namespace biblioteka
         private void PopulateUserBooks()
         {
 
-            listOfUserBooks.MultiColumn = true;
+           // listOfUserBooks.MultiColumn = true;
 
             
 
@@ -83,7 +84,7 @@ namespace biblioteka
 
         private void buttonGoToLibrary_Click(object sender, EventArgs e)
         {
-            FormLogged formLogged = new FormLogged();
+            FormLoggedBorrowBooks formLogged = new FormLoggedBorrowBooks();
             formLogged.Show();
             this.Hide();
         }
@@ -142,7 +143,19 @@ namespace biblioteka
 
             if (userLogged.IsAdmin(AlreadyUserId))
             {
-                FormAdminEditor formAdminEditor = new FormAdminEditor();
+                FormUserEditor formAdminEditor = new FormUserEditor();
+                formAdminEditor.Show();
+                this.Hide();
+            }
+        }
+
+    
+
+        private void booksEditorButton_Click(object sender, EventArgs e)
+        {
+            if (userLogged.IsAdmin(AlreadyUserId))
+            {
+                FormBookEditor formAdminEditor = new FormBookEditor();
                 formAdminEditor.Show();
                 this.Hide();
             }
@@ -150,10 +163,15 @@ namespace biblioteka
 
         private void CheckAdmin()
         {
-            if(userLogged.IsAdmin(AlreadyUserId))
+            if (userLogged.IsAdmin(AlreadyUserId))
             {
-               adminPanelButton.Enabled = true;
-               adminPanelButton.Visible = true;
+                userEditorButton.Enabled = true;
+                userEditorButton.Visible = true;
+
+                booksEditorButton.Enabled = true;
+                booksEditorButton.Visible = true;
+
+                administratorLabel.Visible = true;
             }
         }
     }

@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.buttonGoToLibrary = new System.Windows.Forms.Button();
-            this.listOfUserBooks = new System.Windows.Forms.ListBox();
             this.selectedBookInformationButton = new System.Windows.Forms.Button();
             this.returnABookButton = new System.Windows.Forms.Button();
             this.logoutButton = new System.Windows.Forms.Button();
@@ -46,7 +45,11 @@
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.adminPanelButton = new System.Windows.Forms.Button();
+            this.userEditorButton = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.labelUser = new System.Windows.Forms.Label();
+            this.booksEditorButton = new System.Windows.Forms.Button();
+            this.administratorLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.database1DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookDataGridView)).BeginInit();
@@ -55,23 +58,13 @@
             // buttonGoToLibrary
             // 
             this.buttonGoToLibrary.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.buttonGoToLibrary.Location = new System.Drawing.Point(622, 41);
+            this.buttonGoToLibrary.Location = new System.Drawing.Point(622, 61);
             this.buttonGoToLibrary.Name = "buttonGoToLibrary";
             this.buttonGoToLibrary.Size = new System.Drawing.Size(149, 66);
             this.buttonGoToLibrary.TabIndex = 11;
             this.buttonGoToLibrary.Text = "Borrow a book";
             this.buttonGoToLibrary.UseVisualStyleBackColor = true;
             this.buttonGoToLibrary.Click += new System.EventHandler(this.buttonGoToLibrary_Click);
-            // 
-            // listOfUserBooks
-            // 
-            this.listOfUserBooks.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.listOfUserBooks.FormattingEnabled = true;
-            this.listOfUserBooks.ItemHeight = 20;
-            this.listOfUserBooks.Location = new System.Drawing.Point(797, 167);
-            this.listOfUserBooks.Name = "listOfUserBooks";
-            this.listOfUserBooks.Size = new System.Drawing.Size(175, 124);
-            this.listOfUserBooks.TabIndex = 12;
             // 
             // selectedBookInformationButton
             // 
@@ -97,7 +90,7 @@
             // logoutButton
             // 
             this.logoutButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.logoutButton.Location = new System.Drawing.Point(818, 41);
+            this.logoutButton.Location = new System.Drawing.Point(818, 61);
             this.logoutButton.Name = "logoutButton";
             this.logoutButton.Size = new System.Drawing.Size(133, 66);
             this.logoutButton.TabIndex = 15;
@@ -191,41 +184,89 @@
             this.dataGridViewTextBoxColumn7.HeaderText = "category";
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             // 
-            // adminPanelButton
+            // userEditorButton
             // 
-            this.adminPanelButton.Enabled = false;
-            this.adminPanelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.adminPanelButton.Location = new System.Drawing.Point(818, 412);
-            this.adminPanelButton.Name = "adminPanelButton";
-            this.adminPanelButton.Size = new System.Drawing.Size(143, 139);
-            this.adminPanelButton.TabIndex = 17;
-            this.adminPanelButton.Text = "Admin Panel";
-            this.adminPanelButton.UseVisualStyleBackColor = true;
-            this.adminPanelButton.Visible = false;
-            this.adminPanelButton.Click += new System.EventHandler(this.buttonAdminPanel_Click);
+            this.userEditorButton.Enabled = false;
+            this.userEditorButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.userEditorButton.Location = new System.Drawing.Point(818, 445);
+            this.userEditorButton.Name = "userEditorButton";
+            this.userEditorButton.Size = new System.Drawing.Size(143, 88);
+            this.userEditorButton.TabIndex = 17;
+            this.userEditorButton.Text = "Users Editor";
+            this.userEditorButton.UseVisualStyleBackColor = true;
+            this.userEditorButton.Visible = false;
+            this.userEditorButton.Click += new System.EventHandler(this.buttonAdminPanel_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(825, 36);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(60, 13);
+            this.label3.TabIndex = 30;
+            this.label3.Text = "Logged as:";
+            // 
+            // labelUser
+            // 
+            this.labelUser.AutoSize = true;
+            this.labelUser.Location = new System.Drawing.Point(891, 36);
+            this.labelUser.Name = "labelUser";
+            this.labelUser.Size = new System.Drawing.Size(51, 13);
+            this.labelUser.TabIndex = 29;
+            this.labelUser.Text = "labelUser";
+            // 
+            // booksEditorButton
+            // 
+            this.booksEditorButton.Enabled = false;
+            this.booksEditorButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.booksEditorButton.Location = new System.Drawing.Point(818, 338);
+            this.booksEditorButton.Name = "booksEditorButton";
+            this.booksEditorButton.Size = new System.Drawing.Size(143, 86);
+            this.booksEditorButton.TabIndex = 31;
+            this.booksEditorButton.Text = "Books Editor";
+            this.booksEditorButton.UseVisualStyleBackColor = true;
+            this.booksEditorButton.Visible = false;
+            this.booksEditorButton.Click += new System.EventHandler(this.booksEditorButton_Click);
+            // 
+            // administratorLabel
+            // 
+            this.administratorLabel.AutoSize = true;
+            this.administratorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.administratorLabel.Location = new System.Drawing.Point(804, 300);
+            this.administratorLabel.Name = "administratorLabel";
+            this.administratorLabel.Size = new System.Drawing.Size(168, 24);
+            this.administratorLabel.TabIndex = 32;
+            this.administratorLabel.Text = "Adminitrator Panel:";
+            this.administratorLabel.Visible = false;
             // 
             // FormLoggedBooks
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 579);
-            this.Controls.Add(this.adminPanelButton);
+            this.Controls.Add(this.administratorLabel);
+            this.Controls.Add(this.booksEditorButton);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.labelUser);
+            this.Controls.Add(this.userEditorButton);
             this.Controls.Add(this.bookDataGridView);
             this.Controls.Add(this.logoutButton);
             this.Controls.Add(this.returnABookButton);
             this.Controls.Add(this.selectedBookInformationButton);
-            this.Controls.Add(this.listOfUserBooks);
             this.Controls.Add(this.buttonGoToLibrary);
             this.Name = "FormLoggedBooks";
             this.Text = "FormLoggedBooks";
             this.Load += new System.EventHandler(this.FormLoggedBooks_Load);
             this.Controls.SetChildIndex(this.buttonGoToLibrary, 0);
-            this.Controls.SetChildIndex(this.listOfUserBooks, 0);
             this.Controls.SetChildIndex(this.selectedBookInformationButton, 0);
             this.Controls.SetChildIndex(this.returnABookButton, 0);
             this.Controls.SetChildIndex(this.logoutButton, 0);
             this.Controls.SetChildIndex(this.bookDataGridView, 0);
-            this.Controls.SetChildIndex(this.adminPanelButton, 0);
+            this.Controls.SetChildIndex(this.userEditorButton, 0);
+            this.Controls.SetChildIndex(this.labelUser, 0);
+            this.Controls.SetChildIndex(this.label3, 0);
+            this.Controls.SetChildIndex(this.booksEditorButton, 0);
+            this.Controls.SetChildIndex(this.administratorLabel, 0);
             ((System.ComponentModel.ISupportInitialize)(this.database1DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookDataGridView)).EndInit();
@@ -237,7 +278,6 @@
         #endregion
 
         private System.Windows.Forms.Button buttonGoToLibrary;
-        private System.Windows.Forms.ListBox listOfUserBooks;
         private System.Windows.Forms.Button selectedBookInformationButton;
         private System.Windows.Forms.Button returnABookButton;
         private System.Windows.Forms.Button logoutButton;
@@ -253,6 +293,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private System.Windows.Forms.Button adminPanelButton;
+        private System.Windows.Forms.Button userEditorButton;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label labelUser;
+        private System.Windows.Forms.Button booksEditorButton;
+        private System.Windows.Forms.Label administratorLabel;
     }
 }
