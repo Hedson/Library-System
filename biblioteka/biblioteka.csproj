@@ -80,12 +80,6 @@
       <DependentUpon>FormUserEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Book.cs" />
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormGuest.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,9 +120,6 @@
       <DependentUpon>Registration.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\User.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FormBookEditor.resx">
       <DependentUpon>FormBookEditor.cs</DependentUpon>
     </EmbeddedResource>
