@@ -135,7 +135,6 @@ namespace biblioteka
             }
 
             PopulateUserBooks();
-            new Book().PopulateUserBooks();
         }
 
         private void buttonAdminPanel_Click(object sender, EventArgs e)

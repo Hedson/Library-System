@@ -38,5 +38,35 @@ namespace biblioteka
             this.bookTableAdapter.Fill(this.database1DataSet.Book);
 
         }
+
+        private void addBookButton_Click(object sender, EventArgs e)
+        {
+            string title = titleTextBox.Text;
+            string authorFirstName = authorFirstNameTextBox.Text;
+            string authorLastName = authorLastNameTextBox.Text;
+            string publicationDate = publicationDateTextBox.Text;
+            string category = categoryTextBox.Text;
+            string quantity = quantityTextBox.Text;
+
+            try
+            {
+                Book book = new Book(title, authorFirstName, authorLastName, publicationDate, category, quantity);
+                book.AddBook();
+
+                DataTable bookTable = book.ReturnBooksTable();
+                bookDataGridView.DataSource = bookTable;
+
+                MessageBox.Show("Book added to database.");
+
+                
+
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+        }
+
+
     }
 }
