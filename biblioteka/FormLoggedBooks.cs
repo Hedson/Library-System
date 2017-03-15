@@ -55,29 +55,15 @@ namespace biblioteka
             }
         }
 
-        // Method that populate Books borrowed by user to list from database.
+        // Method that populate Books borrowed by user to DataGridView from database.
         private void PopulateUserBooks()
         {
-
            // listOfUserBooks.MultiColumn = true;
-
-            
-
             string query = "SELECT * FROM Book a " +
                 "INNER JOIN UserBooks b ON a.Id = b.BookId " +
-                "WHERE b.UserId = @UserId";
-            using (connection = new SqlConnection(connectionString))
-            using (SqlCommand command = new SqlCommand(query, connection))
-            using (SqlDataAdapter adapter = new SqlDataAdapter(command))
-            {
-                command.Parameters.AddWithValue("@UserId", FormLoggedBooks.AlreadyUserId);
-
-                DataTable bookTable = new DataTable();
-                adapter.Fill(bookTable);
-
-                bookDataGridView.DataSource = bookTable;        
-            }
-
+                "WHERE b.UserId = '"+ FormLoggedBooks.AlreadyUserId +"'";
+            DataTable bookTable = Book.DoQueryReturnTable(query);
+            bookDataGridView.DataSource = bookTable;
         }
 
 
