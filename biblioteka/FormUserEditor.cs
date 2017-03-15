@@ -40,5 +40,30 @@ namespace biblioteka
             this.bookTableAdapter.Fill(this.database1DataSet.Book);
 
         }
+
+        private void addUserButton_Click(object sender, EventArgs e)
+        {
+            string userName = loginTextBox.Text;
+            string password = passwordTextBox.Text;
+            string firstName = firstNameTextBox.Text;
+            string lastName = lastNameTextBox.Text;
+            string city = cityTextBox.Text;
+            string email = emailTextBox.Text;
+
+            try
+            {
+                User user = new User(userName, password, firstName, lastName, city, email);
+                user.RegisterUser();
+
+                DataTable userTable = User.ReturnUserTable();
+                userTableDataGridView.DataSource = userTable;
+
+                MessageBox.Show("New user created.");
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+        }
     }
 }

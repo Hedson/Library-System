@@ -132,37 +132,6 @@ namespace biblioteka
 
         public void LoginUser()
         {
-            //SqlConnection connection;
-            //string connectionString;
-            //connectionString = ConfigurationManager.ConnectionStrings["biblioteka.Properties.Settings.Database1ConnectionString"].ConnectionString;
-
-            //string query = "SELECT * FROM UserTable where Username = '" + UserName + "'and Password ='" + Password + "'";
-
-            //using (connection = new SqlConnection(connectionString))
-            //using (SqlCommand command = new SqlCommand(query, connection))
-            //using (SqlDataAdapter dataAdapter = new SqlDataAdapter(command))
-            //{
-            //    // command.Parameters.AddWithValue("@user", UserName);
-            //    // command.Parameters.AddWithValue("@pass", Password);
-
-            //    // create new DataTable instance
-            //    DataTable userTable = new DataTable();
-            //    dataAdapter.Fill(userTable);
-
-            //    int count = userTable.Rows.Count;
-            //    if (count == 1)
-            //    {
-            //        AlreadyUserName = UserName;
-            //        MessageBox.Show(AlreadyUserName);
-            //        MessageBox.Show("Login Successful!");
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show("Login failed! Invalid User Name or password.");
-            //    }
-
-            //}
-
             string query = "SELECT * FROM UserTable where Username = '" + UserName + "'and Password ='" + Password + "'";
             DataTable userTable = DoQueryReturnTable(query);
             int count = userTable.Rows.Count;
@@ -209,6 +178,23 @@ namespace biblioteka
 
 
 
+        //public void UpdateUser()
+        //{
+        //    string query = "UPDATE Book SET title = '" + Title + "' ,authorFirstName = '" + AuthorFirstName + "',authorLastName = '" + AuthorLastName +
+        //           "',year = '" + ReleaseDate + "',category = '" + Category + "',quantity = '" + Quantity + "'WHERE Id = '" + selectedBookId + "'";
+        //    DoQuery(query);
+        //}
+        //public static void DeleteUser()
+        //{
+        //    //First delete from UserBooks table all relationships many to many between UserTable and Book.
+        //    string query = "DELETE FROM UserBooks WHERE BookId = '" + selectedBookId + "'";
+        //    DoQueryStatic(query);
+        //    // Now delete column from Book table.
+        //    string queryDelete = "DELETE from Book WHERE Id = '" + selectedBookId + "'";
+        //    DoQueryStatic(queryDelete);
+        //}
+
+
 
         // Method used to Cennect to DB for functionalities like add, edit, delete elements from database.
         public void DoQuery(string query)
@@ -251,6 +237,14 @@ namespace biblioteka
             dataAdapter.Update(userTable);        
         }
 
+        // Return actual Book table - used to refresh displayed data.
+        public static DataTable ReturnUserTable()
+        {
+            string query = "SELECT * FROM UserTable";
+
+            DataTable dataTable = DoQueryReturnTable(query);
+            return dataTable;
+        }
 
         public static DataTable DoQueryReturnTable(string query)
         {
