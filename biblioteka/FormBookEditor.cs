@@ -12,6 +12,7 @@ namespace biblioteka
 {
     public partial class FormBookEditor : Form
     {
+
         public FormBookEditor()
         {
             InitializeComponent();
@@ -67,6 +68,32 @@ namespace biblioteka
             }
         }
 
+        private void updateBookButton_Click(object sender, EventArgs e)
+        {
+            string title = titleTextBox.Text;
+            string authorFirstName = authorFirstNameTextBox.Text;
+            string authorLastName = authorLastNameTextBox.Text;
+            string publicationDate = publicationDateTextBox.Text;
+            string category = categoryTextBox.Text;
+            string quantity = quantityTextBox.Text;
 
+            Book.selectedBookId = Convert.ToInt32(bookDataGridView.CurrentRow.Cells[0].Value);
+
+            try
+            {
+                Book book = new Book(title, authorFirstName, authorLastName, publicationDate, category, quantity);
+                book.UpdateBook();
+
+                DataTable bookTable = Book.ReturnBooksTable();
+                bookDataGridView.DataSource = bookTable;
+
+                MessageBox.Show("Book details updated.");
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+
+        }
     }
 }

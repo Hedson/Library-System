@@ -12,6 +12,8 @@ namespace biblioteka
     // This model will be used to validate Add, delete and update book methods for admin.
     class Book : IDataBase
     {
+        public static int selectedBookId;
+
         public string Title { get; private set; }
         public string AuthorFirstName { get; private set; }
         public string AuthorLastName { get; private set; }
@@ -147,6 +149,14 @@ namespace biblioteka
             string query = "INSERT INTO Book VALUES ('" + Title + "' ,'" + AuthorFirstName + "','" + AuthorLastName + 
                 "','" + ReleaseDate + "','" + Category + "','" + Quantity + "')";
             DoQuery(query);
+        }
+
+        public void UpdateBook()
+        {
+             string query = "UPDATE Book SET title = '" + Title + "' ,authorFirstName = '" + AuthorFirstName + "',authorLastName = '" + AuthorLastName +
+                    "',year = '" + ReleaseDate + "',category = '" + Category + "',quantity = '" + Quantity + "'WHERE Id = '" + selectedBookId + "'";
+              DoQuery(query);
+
         }
 
 

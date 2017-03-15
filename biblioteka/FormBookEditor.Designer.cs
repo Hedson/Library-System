@@ -434,6 +434,7 @@
             this.updateBookButton.TabIndex = 33;
             this.updateBookButton.Text = "Update selected book";
             this.updateBookButton.UseVisualStyleBackColor = true;
+            this.updateBookButton.Click += new System.EventHandler(this.updateBookButton_Click);
             // 
             // deleteBookButton
             // 
