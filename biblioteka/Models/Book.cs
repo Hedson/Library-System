@@ -156,10 +156,19 @@ namespace biblioteka
              string query = "UPDATE Book SET title = '" + Title + "' ,authorFirstName = '" + AuthorFirstName + "',authorLastName = '" + AuthorLastName +
                     "',year = '" + ReleaseDate + "',category = '" + Category + "',quantity = '" + Quantity + "'WHERE Id = '" + selectedBookId + "'";
               DoQuery(query);
-
+        }
+        public static void DeleteBook()
+        {
+            //First delete from UserBooks table all relationships many to many between UserTable and Book.
+            string query = "DELETE FROM UserBooks WHERE BookId = '" + selectedBookId + "'";
+            DoQueryStatic(query);
+            // Now delete column from Book table.
+            string queryDelete = "DELETE from Book WHERE Id = '" + selectedBookId + "'";
+            DoQueryStatic(queryDelete);
         }
 
 
+        // Return actual Book table - used to refresh displayed data.
         public static DataTable ReturnBooksTable()
         {
             string query = "SELECT * FROM Book";

@@ -445,6 +445,7 @@
             this.deleteBookButton.TabIndex = 34;
             this.deleteBookButton.Text = "Delete from database and all users";
             this.deleteBookButton.UseVisualStyleBackColor = true;
+            this.deleteBookButton.Click += new System.EventHandler(this.deleteBookButton_Click);
             // 
             // FormBookEditor
             // 
