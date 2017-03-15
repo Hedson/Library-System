@@ -13,6 +13,7 @@ namespace biblioteka
     class User : IDataBase
     {
         public static string AlreadyUserName;
+        public static int SelectedUserId;
 
         public string UserName { get; private set; }
         public string Password { get; private set; }
@@ -152,7 +153,7 @@ namespace biblioteka
         // Method added new user to UserTable database table.
         public void RegisterUser()
         {
-            string query = "INSERT INTO UserTable VALUES ('" + UserName +"' ,'" + Password + "','" + FirstName + "','" + LastName + "','" + City + "','" + Email + "','"+0+"')";
+            string query = "INSERT INTO UserTable VALUES ('" + UserName +"' ,'" + Password + "','" + Email + "','" + FirstName + "','" + LastName + "','" + City + "','"+0+"')";
             DoQuery(query);
         }
 
@@ -178,21 +179,22 @@ namespace biblioteka
 
 
 
-        //public void UpdateUser()
-        //{
-        //    string query = "UPDATE Book SET title = '" + Title + "' ,authorFirstName = '" + AuthorFirstName + "',authorLastName = '" + AuthorLastName +
-        //           "',year = '" + ReleaseDate + "',category = '" + Category + "',quantity = '" + Quantity + "'WHERE Id = '" + selectedBookId + "'";
-        //    DoQuery(query);
-        //}
-        //public static void DeleteUser()
-        //{
-        //    //First delete from UserBooks table all relationships many to many between UserTable and Book.
-        //    string query = "DELETE FROM UserBooks WHERE BookId = '" + selectedBookId + "'";
-        //    DoQueryStatic(query);
-        //    // Now delete column from Book table.
-        //    string queryDelete = "DELETE from Book WHERE Id = '" + selectedBookId + "'";
-        //    DoQueryStatic(queryDelete);
-        //}
+        public void UpdateUser()
+        {
+            string query = "UPDATE UserTable SET UserName = '" + UserName + "' ,Password = '" + Password + "',email = '" + Email +
+                   "',FirstName = '" + FirstName + "',LastName = '" + LastName + "',City = '" + City + "',IsAdmin = '" + 0 + "'WHERE Id = '" + SelectedUserId + "'";
+            DoQuery(query);
+        }
+
+        public static void DeleteUser()
+        {
+            //First delete from UserBooks table all relationships many to many between Books and User.
+            string query = "DELETE FROM UserBooks WHERE UserId = '" + SelectedUserId + "'";
+            DoQueryStatic(query);
+            // Now delete column from Book table.
+            string queryDelete = "DELETE from UserTable WHERE Id = '" + SelectedUserId+ "'";
+            DoQueryStatic(queryDelete);
+        }
 
 
 

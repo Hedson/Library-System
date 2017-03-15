@@ -77,7 +77,7 @@ namespace biblioteka
             string category = categoryTextBox.Text;
             string quantity = quantityTextBox.Text;
 
-            Book.selectedBookId = Convert.ToInt32(bookDataGridView.CurrentRow.Cells[0].Value);
+            Book.SelectedBookId = Convert.ToInt32(bookDataGridView.CurrentRow.Cells[0].Value);
 
             try
             {
@@ -99,7 +99,7 @@ namespace biblioteka
         private void deleteBookButton_Click(object sender, EventArgs e)
         {
 
-            Book.selectedBookId = Convert.ToInt32(bookDataGridView.CurrentRow.Cells[0].Value);
+            Book.SelectedBookId = Convert.ToInt32(bookDataGridView.CurrentRow.Cells[0].Value);
             Book.DeleteBook();
             DataTable bookTable = Book.ReturnBooksTable();
             bookDataGridView.DataSource = bookTable;

@@ -443,6 +443,7 @@
             this.deleteUserButton.TabIndex = 37;
             this.deleteUserButton.Text = "Delete from database and all users";
             this.deleteUserButton.UseVisualStyleBackColor = true;
+            this.deleteUserButton.Click += new System.EventHandler(this.deleteUserButton_Click);
             // 
             // updateUserButton
             // 
@@ -453,6 +454,7 @@
             this.updateUserButton.TabIndex = 36;
             this.updateUserButton.Text = "Update selected book";
             this.updateUserButton.UseVisualStyleBackColor = true;
+            this.updateUserButton.Click += new System.EventHandler(this.updateUserButton_Click);
             // 
             // addUserButton
             // 

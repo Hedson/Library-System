@@ -65,5 +65,40 @@ namespace biblioteka
                 MessageBox.Show(exception.Message);
             }
         }
+
+        private void updateUserButton_Click(object sender, EventArgs e)
+        {
+            string userName = loginTextBox.Text;
+            string password = passwordTextBox.Text;
+            string firstName = firstNameTextBox.Text;
+            string lastName = lastNameTextBox.Text;
+            string city = cityTextBox.Text;
+            string email = emailTextBox.Text;
+
+            User.SelectedUserId = Convert.ToInt32(userTableDataGridView.CurrentRow.Cells[0].Value);
+
+            try
+            {
+                User user = new User(userName, password, firstName, lastName, city, email);
+                user.UpdateUser();
+
+                DataTable userTable = User.ReturnUserTable();
+                userTableDataGridView.DataSource = userTable;
+
+                MessageBox.Show("User data updated.");
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+        }
+
+        private void deleteUserButton_Click(object sender, EventArgs e)
+        {
+            User.SelectedUserId = Convert.ToInt32(userTableDataGridView.CurrentRow.Cells[0].Value);
+            User.DeleteUser();
+            DataTable userTable = User.ReturnUserTable();
+            userTableDataGridView.DataSource = userTable;
+        }
     }
 }

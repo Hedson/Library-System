@@ -12,7 +12,7 @@ namespace biblioteka
     // This model will be used to validate Add, delete and update book methods for admin.
     class Book : IDataBase
     {
-        public static int selectedBookId;
+        public static int SelectedBookId;
 
         public string Title { get; private set; }
         public string AuthorFirstName { get; private set; }
@@ -154,16 +154,16 @@ namespace biblioteka
         public void UpdateBook()
         {
              string query = "UPDATE Book SET title = '" + Title + "' ,authorFirstName = '" + AuthorFirstName + "',authorLastName = '" + AuthorLastName +
-                    "',year = '" + ReleaseDate + "',category = '" + Category + "',quantity = '" + Quantity + "'WHERE Id = '" + selectedBookId + "'";
+                    "',year = '" + ReleaseDate + "',category = '" + Category + "',quantity = '" + Quantity + "'WHERE Id = '" + SelectedBookId + "'";
               DoQuery(query);
         }
         public static void DeleteBook()
         {
             //First delete from UserBooks table all relationships many to many between UserTable and Book.
-            string query = "DELETE FROM UserBooks WHERE BookId = '" + selectedBookId + "'";
+            string query = "DELETE FROM UserBooks WHERE BookId = '" + SelectedBookId + "'";
             DoQueryStatic(query);
             // Now delete column from Book table.
-            string queryDelete = "DELETE from Book WHERE Id = '" + selectedBookId + "'";
+            string queryDelete = "DELETE from Book WHERE Id = '" + SelectedBookId + "'";
             DoQueryStatic(queryDelete);
         }
 
