@@ -224,6 +224,23 @@ namespace biblioteka
                 SaveChanges(dataAdapter);
             }
         }
+        public static void DoQueryStatic(string query)
+        {
+            SqlConnection connection;
+            string connectionString;
+            connectionString = ConfigurationManager.ConnectionStrings["biblioteka.Properties.Settings.Database1ConnectionString"].ConnectionString;
+
+            using (connection = new SqlConnection(connectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            using (SqlDataAdapter dataAdapter = new SqlDataAdapter(command))
+            {
+                DataTable userTable = new DataTable();
+                dataAdapter.Fill(userTable);
+
+                // Update database.
+                dataAdapter.Update(userTable);
+            }
+        }
 
         public void SaveChanges(SqlDataAdapter dataAdapter)
         {
@@ -235,7 +252,7 @@ namespace biblioteka
         }
 
 
-        public DataTable DoQueryReturnTable(string query)
+        public static DataTable DoQueryReturnTable(string query)
         {
             SqlConnection connection;
             string connectionString;

@@ -108,16 +108,8 @@ namespace biblioteka
 
         private void PopulateBooks()
         {
-            string query = "SELECT * FROM Book";
-            using (connection = new SqlConnection(connectionString))
-            using (SqlCommand command = new SqlCommand(query, connection))
-            using (SqlDataAdapter adapter = new SqlDataAdapter(command))
-            {
-                DataTable bookTable = new DataTable();
-                adapter.Fill(bookTable);
-
-                bookDataGridView.DataSource = bookTable;
-            }
+            DataTable bookTable = Book.ReturnBooksTable();
+            bookDataGridView.DataSource = bookTable;
 
         }
 

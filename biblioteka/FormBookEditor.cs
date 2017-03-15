@@ -53,7 +53,7 @@ namespace biblioteka
                 Book book = new Book(title, authorFirstName, authorLastName, publicationDate, category, quantity);
                 book.AddBook();
 
-                DataTable bookTable = book.ReturnBooksTable();
+                DataTable bookTable = Book.ReturnBooksTable();
                 bookDataGridView.DataSource = bookTable;
 
                 MessageBox.Show("Book added to database.");
