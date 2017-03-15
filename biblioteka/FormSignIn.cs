@@ -29,22 +29,6 @@ namespace biblioteka
         }
 
 
-        private void PopulateUsers()
-        {
-            using (connection = new SqlConnection(connectionString))
-            using (SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM UserTable", connection))
-            {
-                //Da
-                DataTable loginTable = new DataTable();
-                adapter.Fill(loginTable);
-
-                listBox1.DisplayMember = "UserName";
-                listBox1.ValueMember = "id";
-                listBox1.DataSource = loginTable;
-            }
-        }
-
-
         //btn_Submit Click event - take user nad pass, connect to database and login
         private void btn_Submit_Click(object sender, EventArgs e)
         {
@@ -96,7 +80,6 @@ namespace biblioteka
         {
             // TODO: This line of code loads data into the 'database1DataSet.Book' table. You can move, or remove it, as needed.
             this.bookTableAdapter.Fill(this.database1DataSet.Book);
-            PopulateUsers();
         }
 
         private void button1_Click(object sender, EventArgs e)

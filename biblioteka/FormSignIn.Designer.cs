@@ -41,7 +41,6 @@
             this.bookBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bookTableAdapter = new biblioteka.Database1DataSetTableAdapters.BookTableAdapter();
             this.tableAdapterManager = new biblioteka.Database1DataSetTableAdapters.TableAdapterManager();
-            this.listBox1 = new System.Windows.Forms.ListBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.database1DataSet)).BeginInit();
@@ -150,16 +149,7 @@
             this.tableAdapterManager.BookTableAdapter = this.bookTableAdapter;
             this.tableAdapterManager.UpdateOrder = biblioteka.Database1DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.UserBooksTableAdapter = null;
-            //this.tableAdapterManager.UserTableAdapter = null;
             this.tableAdapterManager.UserTableTableAdapter = null;
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(99, 307);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(217, 173);
-            this.listBox1.TabIndex = 11;
             // 
             // button1
             // 
@@ -191,7 +181,6 @@
             this.ClientSize = new System.Drawing.Size(984, 579);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.buttonAsGuest);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -211,7 +200,6 @@
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.label2, 0);
             this.Controls.SetChildIndex(this.buttonAsGuest, 0);
-            this.Controls.SetChildIndex(this.listBox1, 0);
             this.Controls.SetChildIndex(this.button1, 0);
             this.Controls.SetChildIndex(this.label3, 0);
             ((System.ComponentModel.ISupportInitialize)(this.database1DataSet)).EndInit();
@@ -235,7 +223,6 @@
         private System.Windows.Forms.BindingSource bookBindingSource;
         private Database1DataSetTableAdapters.BookTableAdapter bookTableAdapter;
         private Database1DataSetTableAdapters.TableAdapterManager tableAdapterManager;
-        private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label3;
     }

@@ -86,22 +86,15 @@ namespace biblioteka
 
         private void borrowABookButton_Click(object sender, EventArgs e)
         {           
-            string query = "INSERT INTO UserBooks VALUES (@UserId,@BookId)";
+            // Selected book Id integer value.
+            int selectedBookId = Convert.ToInt32(bookDataGridView.CurrentRow.Cells[0].Value);
 
-            using (connection = new SqlConnection(connectionString))
-            using (SqlCommand command = new SqlCommand(query, connection))
-            {
-                connection.Open();
-                command.Parameters.AddWithValue("@UserId", FormLoggedBooks.AlreadyUserId);
-                // Value at first column of selected DataGridvView row(Selected book Id).
-                command.Parameters.AddWithValue("@BookId", Convert.ToInt32(bookDataGridView.CurrentRow.Cells[0].Value));
-
-
-                command.ExecuteScalar();
-            }
+            // Query that create table row that create relation between book id and user id(many-to-many relation).
+            string query = "INSERT INTO UserBooks VALUES ('"+ FormLoggedBooks.AlreadyUserId + "','"+ selectedBookId +"')";
+            User.DoQueryStatic(query);
 
             // Decrease qunatity value by 1.
-            DecreaseQuantityValue(); 
+            DecreaseQuantityValue();
             // Update DataGridView.
             PopulateBooks();  
         }
@@ -110,24 +103,17 @@ namespace biblioteka
         {
             DataTable bookTable = Book.ReturnBooksTable();
             bookDataGridView.DataSource = bookTable;
-
         }
 
         // Method used to decrease quantity value in table Book by 1.
         private void DecreaseQuantityValue()
         {
+            // Selected book Id integer value.
+            int selectedBookId = Convert.ToInt32(bookDataGridView.CurrentRow.Cells[0].Value);
+
             // Set query, that is used to decrease quantity value by 1.
-            string query = "UPDATE Book SET quantity = quantity - 1 where Id = @BookId";
-
-            using (connection = new SqlConnection(connectionString))
-            using (SqlCommand command = new SqlCommand(query, connection))
-            {
-                connection.Open();
-                command.Parameters.AddWithValue("@BookId", Convert.ToInt32(bookDataGridView.CurrentRow.Cells[0].Value));
-
-
-                command.ExecuteScalar();
-            }
+            string query = "UPDATE Book SET quantity = quantity - 1 where Id = '"+ selectedBookId + "'";
+            Book.DoQueryStatic(query);
         }
 
         

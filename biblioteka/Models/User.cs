@@ -192,10 +192,9 @@ namespace biblioteka
             string query = "DELETE FROM UserBooks WHERE UserId = '" + SelectedUserId + "'";
             DoQueryStatic(query);
             // Now delete column from Book table.
-            string queryDelete = "DELETE from UserTable WHERE Id = '" + SelectedUserId+ "'";
+            string queryDelete = "DELETE from UserTable WHERE Id = '" + SelectedUserId + "'";
             DoQueryStatic(queryDelete);
         }
-
 
 
         // Method used to Cennect to DB for functionalities like add, edit, delete elements from database.
