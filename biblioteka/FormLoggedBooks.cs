@@ -42,17 +42,7 @@ namespace biblioteka
         {
             string query = "SELECT u.Id FROM UserTable u " +
                 "WHERE u.UserName = '" + User.AlreadyUserName + "'";
-            //using (connection = new SqlConnection(connectionString))
-            //using (SqlCommand command = new SqlCommand(query, connection))
-            //using (SqlDataAdapter adapter = new SqlDataAdapter(command))
-            //{
-            //    command.Parameters.AddWithValue("@UserName", User.AlreadyUserName);
 
-            //    DataTable userTable = new DataTable();
-            //    adapter.Fill(userTable);
-
-            //    AlreadyUserId = int.Parse(userTable.Rows[0][0].ToString());
-            //}
             try
                 {
                     DataTable userTable = User.DoQueryReturnTable(query);
@@ -103,31 +93,12 @@ namespace biblioteka
 
             string query = "DELETE TOP (1) FROM UserBooks WHERE UserId='" + FormLoggedBooks.AlreadyUserId + "' AND BookId='" + Convert.ToInt32(bookDataGridView.CurrentRow.Cells[0].Value) + "'";
 
-            //using (connection = new SqlConnection(connectionString))
-            //using (SqlCommand command = new SqlCommand(query, connection))
-            //{
-            //    connection.Open();
-            //    command.Parameters.AddWithValue("@UserId", FormLoggedBooks.AlreadyUserId);
-            //    // Value at first column of selected DataGridvView row(Selected book Id).
-            //    command.Parameters.AddWithValue("@BookId", Convert.ToInt32(bookDataGridView.CurrentRow.Cells[0].Value));
 
-
-            //    command.ExecuteScalar();
-            //}
             Book.DoQueryStatic(query);
 
             // Second query to decrease quantity value by 1.
             query = "UPDATE Book SET quantity = quantity + 1 where Id = '" + Convert.ToInt32(bookDataGridView.CurrentRow.Cells[0].Value) + "'";
 
-            //using (connection = new SqlConnection(connectionString))
-            //using (SqlCommand command = new SqlCommand(query, connection))
-            //{
-            //    connection.Open();
-            //    command.Parameters.AddWithValue("@BookId", Convert.ToInt32(bookDataGridView.CurrentRow.Cells[0].Value));
-
-
-            //    command.ExecuteScalar();
-            //}
             Book.DoQueryStatic(query);
             PopulateUserBooks();
         }
