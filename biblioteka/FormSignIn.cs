@@ -18,7 +18,7 @@ namespace biblioteka
         // Public static string to share this string to other forms.
         public static string AlreadyUserName;
 
-        SqlConnection connection;
+        //SqlConnection connection;
         string connectionString;
 
 

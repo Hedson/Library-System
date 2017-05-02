@@ -16,7 +16,7 @@ namespace biblioteka
     {
         public static int AlreadyUserId;
 
-        SqlConnection connection;
+        //SqlConnection connection;
         string connectionString;
 
         User userLogged = new User(User.AlreadyUserName);

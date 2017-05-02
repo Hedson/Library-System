@@ -14,7 +14,7 @@ namespace biblioteka
 {
     public partial class FormLoggedBorrowBooks : FormPrimary
     {
-        SqlConnection connection;
+        //SqlConnection connection;
         string connectionString;
 
         public FormLoggedBorrowBooks()
